@@ -1,5 +1,3 @@
-openapi: 3.0.1
-
 info:
   title: mitum-currency - digest API
   description: >-
@@ -15,28 +13,28 @@ info:
 
 externalDocs:
   description: Find out more about mitum-currency
-  url: 'https://github.com/spikeekips/mitum-currency'
+  url: "https://github.com/spikeekips/mitum-currency"
 
 servers:
-- url: https://testnet.protocon.io
+  - url: https://testnet.protocon.io
 
 tags:
-- name: node-info
-  description: node information of mitum-currency node
-- name: block
-  description: block information
-- name: account
-  description: account state and it's operations
-- name: builder
-  description: build operation and broadcast it
-- name: currency
-  description: currency information
+  - name: node-info
+    description: node information of mitum-currency node
+  - name: block
+    description: block information
+  - name: account
+    description: account state and it's operations
+  - name: builder
+    description: build operation and broadcast it
+  - name: currency
+    description: currency information
 
 paths:
   /:
     get:
       tags:
-      - node-info
+        - node-info
       summary: Node information
       operationId: node-info
       responses:
@@ -45,13 +43,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: node info
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/NodeInfoHAL'
+                $ref: "#/components/schemas/NodeInfoHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -72,7 +70,7 @@ paths:
   /block/{height}:
     get:
       tags:
-      - block
+        - block
       summary: 1. Block by block height
       description: >-
         Basically the hal document of response does include the links for components of *block* like *manifest*.
@@ -83,20 +81,20 @@ paths:
           description: block height
           required: true
           schema:
-            $ref: '#/components/schemas/Height'
+            $ref: "#/components/schemas/Height"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of block by block height
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/BlockHeightHAL'
+                $ref: "#/components/schemas/BlockHeightHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -117,7 +115,7 @@ paths:
   /block/{block_hash}:
     get:
       tags:
-      - block
+        - block
       summary: 2. Block by block hash
       description: >-
         *block* by *hash*. The basic structure of it is same with `/block/{height}`.
@@ -135,13 +133,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of block
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/BlockHAL'
+                $ref: "#/components/schemas/BlockHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -162,7 +160,7 @@ paths:
   /block/{height}/manifest:
     get:
       tags:
-      - block
+        - block
       summary: 3. Block manifest by block height
       description: >-
         *block* *manifest* by height.
@@ -173,26 +171,26 @@ paths:
           description: block height
           required: true
           schema:
-            $ref: '#/components/schemas/Height'
+            $ref: "#/components/schemas/Height"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         404:
           description: not found
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of block manifest by block height
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ManifestHAL'
+                $ref: "#/components/schemas/ManifestHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -213,7 +211,7 @@ paths:
   /block/{block_hash}/manifest:
     get:
       tags:
-      - block
+        - block
       summary: 4. Block manifest by block hash
       description: >-
         *block* *manifest* by hash.
@@ -231,19 +229,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         404:
           description: not found
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of block manifest by block hash
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ManifestHAL'
+                $ref: "#/components/schemas/ManifestHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -264,7 +262,7 @@ paths:
   /block/operation/{operation_fact_hash}:
     get:
       tags:
-      - block
+        - block
       summary: 5. Operation by it's fact hash.
       description: >-
         operation by it's **fact** *hash*, not it's own *hash*.
@@ -273,7 +271,7 @@ paths:
         - name: operation_fact_hash
           in: path
           description: >-
-              *fact* *hash* of operation.
+            *fact* *hash* of operation.
           required: true
           schema:
             type: string
@@ -283,19 +281,19 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         404:
           description: not found
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationHAL'
+                $ref: "#/components/schemas/OperationHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -316,7 +314,7 @@ paths:
   /block/manifests:
     get:
       tags:
-      - block
+        - block
       summary: 6. All the manifest
       operationId: manifests
       parameters:
@@ -342,7 +340,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -357,7 +355,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -371,7 +369,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/ManifestsHAL'
+                $ref: "#/components/schemas/ManifestsHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -392,7 +390,7 @@ paths:
   /block/{height}/operations:
     get:
       tags:
-      - block
+        - block
       summary: 7. All the operations of block
       operationId: operations-by-height
       parameters:
@@ -401,7 +399,7 @@ paths:
           description: block height
           required: true
           schema:
-            $ref: '#/components/schemas/Height'
+            $ref: "#/components/schemas/Height"
         - name: offset
           in: query
           schema:
@@ -424,7 +422,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -439,7 +437,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -453,7 +451,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationsByHeightHAL'
+                $ref: "#/components/schemas/OperationsByHeightHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -474,7 +472,7 @@ paths:
   /block/operations:
     get:
       tags:
-      - block
+        - block
       summary: 8. All the operations
       operationId: operations
       parameters:
@@ -500,7 +498,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -515,7 +513,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -529,7 +527,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationsHAL'
+                $ref: "#/components/schemas/OperationsHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -550,7 +548,7 @@ paths:
   /account/{address}:
     get:
       tags:
-      - account
+        - account
       summary: 1. The latest state of account
       description: >-
         The latest state of account. It contains the *keys* of account and it's *balance*.
@@ -562,26 +560,26 @@ paths:
             *address* of account.
           required: true
           schema:
-            $ref: '#/components/schemas/AccountAddress'
+            $ref: "#/components/schemas/AccountAddress"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         404:
           description: not found
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of account
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AccountHAL'
+                $ref: "#/components/schemas/AccountHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -602,7 +600,7 @@ paths:
   /account/{address}/operations:
     get:
       tags:
-      - account
+        - account
       summary: 2. Operations related with the account
       description: >-
         Operations, which are related with the account.
@@ -614,7 +612,7 @@ paths:
             *address* of account.
           required: true
           schema:
-            $ref: '#/components/schemas/AccountAddress'
+            $ref: "#/components/schemas/AccountAddress"
         - name: offset
           in: query
           schema:
@@ -637,7 +635,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -652,7 +650,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -666,7 +664,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/AccountOperationsHAL'
+                $ref: "#/components/schemas/AccountOperationsHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -687,7 +685,7 @@ paths:
   /accounts:
     get:
       tags:
-      - account
+        - account
       summary: 3. Accounts related with the public key
       description: >-
         Accounts, which are related with the public key.
@@ -714,7 +712,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -729,7 +727,7 @@ paths:
             application/problem+json:
               schema:
                 allOf:
-                  - $ref: '#/components/schemas/Problem'
+                  - $ref: "#/components/schemas/Problem"
                   - type: object
                     properties:
                       title:
@@ -743,7 +741,7 @@ paths:
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/PublicKeyAccountsHAL'
+                $ref: "#/components/schemas/PublicKeyAccountsHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -764,7 +762,7 @@ paths:
   /builder/operation:
     get:
       tags:
-      - builder
+        - builder
       summary: 1. Operation types to build.
       description: >-
         It returns operation types available with API.
@@ -775,13 +773,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationBuilderHAL'
+                $ref: "#/components/schemas/OperationBuilderHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -802,7 +800,7 @@ paths:
   /builder/operation/fact/template/{fact}:
     get:
       tags:
-      - builder
+        - builder
       summary: 2. Fact template to build operations.
       description: >-
         It returns fact template for `/builder/operation/fact`.
@@ -811,35 +809,35 @@ paths:
         - name: fact
           in: path
           description: >-
-              *fact* name.
+            *fact* name.
           required: true
           schema:
             type: string
             enum:
-            - create-accounts
-            - key-updater
-            - transfers
-            - currency-register
-            - currency-policy-updater
+              - create-accounts
+              - key-updater
+              - transfers
+              - currency-register
+              - currency-policy-updater
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         404:
           description: template not found
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation fact template
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationTemplateCreateAccountsFactHAL'
+                $ref: "#/components/schemas/OperationTemplateCreateAccountsFactHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -860,7 +858,7 @@ paths:
   /builder/operation/fact:
     post:
       tags:
-      - builder
+        - builder
       summary: 3. Build operation messages by fact.
       description: >-
         It receives the edited fact message, not template HAL itself.
@@ -871,31 +869,31 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAccountsFact'
+              $ref: "#/components/schemas/CreateAccountsFact"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         400:
           description: problems in request.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation template with signed fact.
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationTemplateCreateAccountsHAL'
+                $ref: "#/components/schemas/OperationTemplateCreateAccountsHAL"
 
   /builder/operation/sign:
     post:
       tags:
-      - builder
+        - builder
       summary: 4. Sign operation messages.
       description: >-
         It receives the edited operation message, not template HAL itself.
@@ -906,31 +904,31 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateAccounts'
+              $ref: "#/components/schemas/CreateAccounts"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         400:
           description: problems in request.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation template with signed fact.
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/OperationTemplateCreateAccountsSignHAL'
+                $ref: "#/components/schemas/OperationTemplateCreateAccountsSignHAL"
 
   /builder/send:
     post:
       tags:
-      - builder
+        - builder
       summary: 5. Broadcast operation and seal messages to network.
       description: >-
         It receives the operation or seal and broadcasts to the network. The signer of seal(not *operation*) will be digest node itself. Such as,
@@ -944,40 +942,40 @@ paths:
           application/json:
             schema:
               oneOf:
-                - $ref: '#/components/schemas/Seal'
-                - $ref: '#/components/schemas/CreateAccountsSend'
-                - $ref: '#/components/schemas/KeyUpdaterSend'
-                - $ref: '#/components/schemas/TransfersSend'
-                - $ref: '#/components/schemas/CurrencyRegisterNil'
-                - $ref: '#/components/schemas/CurrencyRegisterFixed'
-                - $ref: '#/components/schemas/CurrencyRegisterRatio'
-                - $ref: '#/components/schemas/CurrencyPolicyUpdaterNil'
-                - $ref: '#/components/schemas/CurrencyPolicyUpdaterFixed'
-                - $ref: '#/components/schemas/CurrencyPolicyUpdaterRatio'
+                - $ref: "#/components/schemas/Seal"
+                - $ref: "#/components/schemas/CreateAccountsSend"
+                - $ref: "#/components/schemas/KeyUpdaterSend"
+                - $ref: "#/components/schemas/TransfersSend"
+                - $ref: "#/components/schemas/CurrencyRegisterNil"
+                - $ref: "#/components/schemas/CurrencyRegisterFixed"
+                - $ref: "#/components/schemas/CurrencyRegisterRatio"
+                - $ref: "#/components/schemas/CurrencyPolicyUpdaterNil"
+                - $ref: "#/components/schemas/CurrencyPolicyUpdaterFixed"
+                - $ref: "#/components/schemas/CurrencyPolicyUpdaterRatio"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         400:
           description: problems in request.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of operation template with signed fact.
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/SealHAL'
+                $ref: "#/components/schemas/SealHAL"
 
   /currency:
     get:
       tags:
-      - currency
+        - currency
       summary: 1. Currencies information
       operationId: currencies
       responses:
@@ -986,13 +984,13 @@ paths:
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of currencies
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/CurrenciesHAL'
+                $ref: "#/components/schemas/CurrenciesHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -1013,7 +1011,7 @@ paths:
   /currency/{currency_id}:
     get:
       tags:
-      - currency
+        - currency
       summary: 2. Currency information
       operationId: currency
       parameters:
@@ -1022,20 +1020,20 @@ paths:
           description: currency unique id(or name)
           required: true
           schema:
-            $ref: '#/components/schemas/CurrencyID'
+            $ref: "#/components/schemas/CurrencyID"
       responses:
         500:
           description: problems in processing.
           content:
             application/problem+json:
               schema:
-                $ref: '#/components/schemas/Problem'
+                $ref: "#/components/schemas/Problem"
         200:
           description: hal document of currency of *currency_id*
           content:
             application/hal+json:
               schema:
-                $ref: '#/components/schemas/CurrencyHAL'
+                $ref: "#/components/schemas/CurrencyHAL"
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
@@ -1062,14 +1060,14 @@ components:
     Problem:
       type: object
       required:
-      - _hint
-      - title
-      - type
-      - detail
+        - _hint
+        - title
+        - type
+        - detail
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: mitum-currency-problem-v0.0.1
               default: mitum-currency-problem-v0.0.1
@@ -1096,7 +1094,7 @@ components:
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: seal-v0.0.1
               default: seal-v0.0.1
@@ -1123,11 +1121,11 @@ components:
           type: array
           items:
             allOf:
-              - $ref: '#/components/schemas/Operation'
+              - $ref: "#/components/schemas/Operation"
               - properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-create-accounts-operation-v0.0.1
                   hash:
@@ -1135,11 +1133,11 @@ components:
                     format: hash
                     example: 7afVZcu9MQc2yXdN6soWYy7dDqoqhiT2LYWWQ7j6ak1E
                   fact:
-                    $ref: '#/components/schemas/CreateAccountsFactSend'
+                    $ref: "#/components/schemas/CreateAccountsFactSend"
                   fact_signs:
                     type: array
                     items:
-                      $ref: '#/components/schemas/FactSignSeal'
+                      $ref: "#/components/schemas/FactSignSeal"
                   memo:
                     type: string
                     example: example
@@ -1157,7 +1155,7 @@ components:
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: seal-v0.0.1
               default: seal-v0.0.1
@@ -1184,11 +1182,11 @@ components:
           type: array
           items:
             allOf:
-              - $ref: '#/components/schemas/Operation'
+              - $ref: "#/components/schemas/Operation"
               - properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-create-accounts-operation-v0.0.1
                   hash:
@@ -1196,26 +1194,26 @@ components:
                     format: hash
                     example: 7afVZcu9MQc2yXdN6soWYy7dDqoqhiT2LYWWQ7j6ak1E
                   fact:
-                    $ref: '#/components/schemas/CreateAccountsFactSearch'
+                    $ref: "#/components/schemas/CreateAccountsFactSearch"
                   fact_signs:
                     type: array
                     items:
-                      $ref: '#/components/schemas/FactSignSeal'
+                      $ref: "#/components/schemas/FactSignSeal"
                   memo:
                     type: string
-                    example: example    
+                    example: example
 
     FactSignSeal:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -1234,19 +1232,19 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T04:35:42.696524942Z"      
+          example: "2021-08-31T04:35:42.696524942Z"
 
     CreateAccountsFactSend:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - sender
-          - items
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-fact-v0.0.1
                   default: mitum-currency-create-accounts-operation-fact-v0.0.1
@@ -1256,7 +1254,7 @@ components:
               type: string
               format: hash
               example: EZNFttdY23Dk1ggcD8LzrQ6pM74oPvoNdjbdrLpYr5RH
-            token: 
+            token:
               description: >-
                 Replace your own token. *token* value should be encoded by base64.
               type: string
@@ -1264,7 +1262,7 @@ components:
               example: MjAyMS0wOC0zMVQwNDozNTo0Mi42OTYyNDYxMTRa
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - type: string
                   example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
             items:
@@ -1272,35 +1270,35 @@ components:
               items:
                 type: object
                 required:
-                - _hint
-                - keys
-                - amount
+                  - _hint
+                  - keys
+                  - amount
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-create-accounts-single-amount-v0.0.1
                   keys:
-                    $ref: '#/components/schemas/AccountKeysSeal'
+                    $ref: "#/components/schemas/AccountKeysSeal"
                   amounts:
                     type: array
                     items:
                       description: The initial balance of account.
                       allOf:
-                        - $ref: '#/components/schemas/AmountSeal'    
+                        - $ref: "#/components/schemas/AmountSeal"
 
     AmountSeal:
       type: object
       required:
-      - _hint
-      - hash
-      - amount
-      - currency
+        - _hint
+        - hash
+        - amount
+        - currency
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-amount-v0.0.1
               example: mitum-currency-amount-v0.0.1
@@ -1310,18 +1308,18 @@ components:
           example: "1000"
           default: "1000"
         currency:
-          $ref: '#/components/schemas/CurrencyID'      
+          $ref: "#/components/schemas/CurrencyID"
 
     AccountKeysSeal:
       type: object
       required:
-      - _hint
-      - keys
-      - threshold
+        - _hint
+        - keys
+        - threshold
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-keys-v0.0.1
               example: mitum-currency-keys-v0.0.1
@@ -1332,24 +1330,24 @@ components:
         keys:
           type: array
           items:
-            $ref: '#/components/schemas/AccountKeySeal'
+            $ref: "#/components/schemas/AccountKeySeal"
         threshold:
           description: >-
             *threshold* should be `> 0` and `<= 100`.
           type: integer
           format: int32
-          example: 100 
+          example: 100
 
     AccountKeySeal:
       type: object
       required:
-      - _hint
-      - key
-      - weight
+        - _hint
+        - key
+        - weight
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-key-v0.0.1
               example: mitum-currency-key-v0.0.1
@@ -1364,24 +1362,24 @@ components:
             *weight* should be `> 1` and  `<= 100`.
           type: integer
           format: int32
-          example: 100      
+          example: 100
 
     HAL:
       type: object
       required:
-      - _hint
-      - hint
-      - _links
+        - _hint
+        - hint
+        - _links
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: mitum-currency-hal-v0.0.1
               default: mitum-currency-hal-v0.0.1
         hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: " "
               default: " "
@@ -1390,7 +1388,7 @@ components:
           properties:
             self:
               allOf:
-                - $ref: '#/components/schemas/HALLink'
+                - $ref: "#/components/schemas/HALLink"
                 - type: object
                   properties:
                     href:
@@ -1410,33 +1408,31 @@ components:
         href:
           type: string
 
-
-
     NodeInfoHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-node-info-v0.0.1
                   default: mitum-currency-node-info-v0.0.1
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   default: mitum-currency-hal-v0.0.1
                   example: mitum-currency-hal-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/NodeInfo'
+              $ref: "#/components/schemas/NodeInfo"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1444,7 +1440,7 @@ components:
                           example: /
                 block:prev:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1452,7 +1448,7 @@ components:
                           example: /block/243
                 block:next:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1460,7 +1456,7 @@ components:
                           example: /block/245
                 block:current:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1468,7 +1464,7 @@ components:
                           example: /block/244
                 block:current-manifest:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1476,7 +1472,7 @@ components:
                           example: /block/244/manifest
                 currency:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1484,7 +1480,7 @@ components:
                           example: /currency
                 currency:{currencyid}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1496,7 +1492,7 @@ components:
                           example: true
                 block:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1509,7 +1505,7 @@ components:
                           example: true
                 block:manifest:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1522,7 +1518,7 @@ components:
                           example: true
                 block:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1535,7 +1531,7 @@ components:
                           example: true
                 block:manifest:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1549,7 +1545,7 @@ components:
 
     BlockHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _links:
@@ -1557,7 +1553,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1565,15 +1561,15 @@ components:
                           example: /block/CHboAfLXbm7kFsr2JhdrJb2Qg4WL96YmK8E6t1NPABeB
                 manifest:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
-                        href: 
+                        href:
                           type: string
                           example: /block/CHboAfLXbm7kFsr2JhdrJb2Qg4WL96YmK8E6t1NPABeB/manifest
                 block:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1585,7 +1581,7 @@ components:
                           example: true
                 manifest:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1597,7 +1593,7 @@ components:
                           example: true
                 block:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1609,7 +1605,7 @@ components:
                           example: true
                 manifest:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1622,7 +1618,7 @@ components:
 
     BlockHeightHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _links:
@@ -1630,7 +1626,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1638,7 +1634,7 @@ components:
                           example: /block/3
                 prev:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1646,7 +1642,7 @@ components:
                           example: /block/2
                 next:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1654,7 +1650,7 @@ components:
                           example: /block/4
                 current:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1662,7 +1658,7 @@ components:
                           example: /block/3
                 current-manifest:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1670,7 +1666,7 @@ components:
                           example: /block/3/manifest
                 block:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1682,7 +1678,7 @@ components:
                           example: true
                 manifest:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1694,7 +1690,7 @@ components:
                           example: true
                 block:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1706,7 +1702,7 @@ components:
                           example: true
                 manifest:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1716,7 +1712,7 @@ components:
                           type: boolean
                           default: true
                           example: true
-    
+
     Node:
       type: object
       required:
@@ -1726,12 +1722,12 @@ components:
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-node-v0.0.1
               default: base-node-v0.0.1
         address:
-          $ref: '#/components/schemas/NodeAddress'
+          $ref: "#/components/schemas/NodeAddress"
         publickey:
           type: string
           format: publickey
@@ -1747,7 +1743,7 @@ components:
       properties:
         address:
           allOf:
-            - $ref: '#components/schemas/NodeAddress'
+            - $ref: "#components/schemas/NodeAddress"
             - type: string
               default: n0:sa-v0.0.1
               example: n0:sa-v0.0.1
@@ -1766,29 +1762,29 @@ components:
 
     PublicKeyAccountsHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: " "
                   default: " "
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   default: mitum-currency-hal-v0.0.1
                   example: mitum-currency-hal-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/PublicKeyAccountHAL'
+              $ref: "#/components/schemas/PublicKeyAccountHAL"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1796,7 +1792,7 @@ components:
                           example: /accounts?publickey=qJVPg9zo5a43iohUcYEU1DJpHKhX9RzJYBufBfBfd3DRWc:btc-pub-v0.0.1&offset=CLgvEdPr6LTQh39c1yDfEbew1bPektGqpQZ6CaYf9V7C:mca-v0.0.1
                 next:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1805,29 +1801,29 @@ components:
 
     PublicKeyAccountHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: "mitum-currency-account-value-v0.0.1"
                   default: "mitum-currency-account-value-v0.0.1"
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   default: mitum-currency-hal-v0.0.1
                   example: mitum-currency-hal-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/PublicKeyAccountValue'
+              $ref: "#/components/schemas/PublicKeyAccountValue"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1835,7 +1831,7 @@ components:
                           example: /account/6bqtSiw22NT9rN9W2gQAkbPp9KkjBQu8kwHrZjyegCUV:mca-v0.0.1
                 block:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1843,7 +1839,7 @@ components:
                           example: /block/33
                 previous_block:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1851,7 +1847,7 @@ components:
                           example: /block/32
                 operations:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1859,7 +1855,7 @@ components:
                           example: /account/6bqtSiw22NT9rN9W2gQAkbPp9KkjBQu8kwHrZjyegCUV:mca-v0.0.1/operations
                 operations:{offset}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1871,7 +1867,7 @@ components:
                           example: true
                 operations:{offset, reverse}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -1884,19 +1880,19 @@ components:
 
     PublicKeyAccountValue:
       allOf:
-        - $ref: '#/components/schemas/Account'
+        - $ref: "#/components/schemas/Account"
         - type: object
           required:
-          - _hint
-          - hash
-          - address
-          - keys
-          - height
-          - previous_height
+            - _hint
+            - hash
+            - address
+            - keys
+            - height
+            - previous_height
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   default: mitum-currency-account-value-v0.0.1
                   example: mitum-currency-account-value-v0.0.1
@@ -1906,16 +1902,16 @@ components:
               description: hash block
               example: 7LsHSnHEpsyoaY8MQtfsWHSgMEB3Bk5cEBPyNyx3fSUu
             keys:
-              $ref: '#/components/schemas/PublicKeyAccountKeys'
+              $ref: "#/components/schemas/PublicKeyAccountKeys"
             height:
               allOf:
-                - $ref: '#/components/schemas/Height'
+                - $ref: "#/components/schemas/Height"
                 - type: integer
                   default: 33
                   example: 33
             previous_height:
               allOf:
-                - $ref: '#/components/schemas/Height'
+                - $ref: "#/components/schemas/Height"
                 - type: integer
                   default: 32
                   example: 32
@@ -1923,13 +1919,13 @@ components:
     PublicKeyAccountKeys:
       type: object
       required:
-      - _hint
-      - keys
-      - threshold
+        - _hint
+        - keys
+        - threshold
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-keys-v0.0.1
               example: mitum-currency-keys-v0.0.1
@@ -1940,7 +1936,7 @@ components:
         keys:
           type: array
           items:
-            $ref: '#/components/schemas/PublicKeyAccountKey'
+            $ref: "#/components/schemas/PublicKeyAccountKey"
         threshold:
           description: >-
             *threshold* should be `> 0` and `<= 100`.
@@ -1953,13 +1949,13 @@ components:
         *publickey* and *weight* to access account.
       type: object
       required:
-      - _hint
-      - key
-      - weight
+        - _hint
+        - key
+        - weight
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-key-v0.0.1
               example: mitum-currency-key-v0.0.1
@@ -1976,28 +1972,27 @@ components:
           format: int32
           example: 100
 
-
     NodeInfo:
       type: object
       required:
-      - _hint
-      - node
-      - network_id
-      - state
-      - last_block
-      - version
-      - url
-      - policy
-      - suffrage
+        - _hint
+        - node
+        - network_id
+        - state
+        - last_block
+        - version
+        - url
+        - policy
+        - suffrage
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-node-info-v0.0.1
               example: mitum-currency-node-info-v0.0.1
         node:
-          $ref: '#/components/schemas/Node'
+          $ref: "#/components/schemas/Node"
         network_id:
           type: string
           example: "bWl0dW0="
@@ -2006,14 +2001,14 @@ components:
           example: CONSENSUS
           default: BOOTING
           enum:
-          - STOPPED
-          - BOOTING
-          - CONSENSUS
-          - JOINING
-          - SYNCING
-          - BROKEN
+            - STOPPED
+            - BOOTING
+            - CONSENSUS
+            - JOINING
+            - SYNCING
+            - BROKEN
         last_block:
-          $ref: '#/components/schemas/Manifest'
+          $ref: "#/components/schemas/Manifest"
         version:
           type: string
           example: v0.0.1
@@ -2035,7 +2030,7 @@ components:
             suffrage:
               type: string
               description: suffrage
-              example: "{\"type\":\"\",\"cache_size\":10,\"number_of_acting\":1}"
+              example: '{"type":"","cache_size":10,"number_of_acting":1}'
             interval_broadcasting_init_ballot:
               type: integer
               description: interval for broadcasting init ballot
@@ -2071,24 +2066,24 @@ components:
         suffrage:
           type: array
           items:
-            $ref: '#/components/schemas/Suffrage'
+            $ref: "#/components/schemas/Suffrage"
 
     Manifest:
       type: object
       required:
-      - _hint
-      - hash
-      - height
-      - round
-      - proposal
-      - previous_block
-      - block_operations
-      - block_states
-      - confirmed_at
+        - _hint
+        - hash
+        - height
+        - round
+        - proposal
+        - previous_block
+        - block_operations
+        - block_states
+        - confirmed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: block-manifest-v0.0.1
               example: block-manifest-v0.0.1
@@ -2098,7 +2093,7 @@ components:
           description: hash block
           example: CHboAfLXbm7kFsr2JhdrJb2Qg4WL96YmK8E6t1NPABeB
         height:
-          $ref: '#/components/schemas/Height'
+          $ref: "#/components/schemas/Height"
         round:
           type: integer
           format: int64
@@ -2141,13 +2136,13 @@ components:
         *publickey* and *weight* to access account.
       type: object
       required:
-      - _hint
-      - key
-      - weight
+        - _hint
+        - key
+        - weight
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-key-v0.0.1
               example: mitum-currency-key-v0.0.1
@@ -2193,13 +2188,13 @@ components:
         threshold=60`, so this *FactSign* authorizes the operation.
       type: object
       required:
-      - _hint
-      - keys
-      - threshold
+        - _hint
+        - keys
+        - threshold
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-keys-v0.0.1
               example: mitum-currency-keys-v0.0.1
@@ -2210,7 +2205,7 @@ components:
         keys:
           type: array
           items:
-            $ref: '#/components/schemas/AccountKey'
+            $ref: "#/components/schemas/AccountKey"
         threshold:
           description: >-
             *threshold* should be `> 0` and `<= 100`.
@@ -2221,14 +2216,14 @@ components:
     Account:
       type: object
       required:
-      - _hint
-      - hash
-      - address
-      - keys
+        - _hint
+        - hash
+        - address
+        - keys
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-account-v0.0.1
               example: mitum-currency-account-v0.0.1
@@ -2239,7 +2234,7 @@ components:
           example: CkNB7yu1YbAU5c8LFRV6HbFiuj9azQ3LCwuTuxMREbkd
         address:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: account address
             - type: string
               example: Bu9tSW5zdFwzeAgnCLUWV8ensutagkPB4qxJDr7K87WX:mca-v0.0.1
@@ -2253,7 +2248,7 @@ components:
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         default: mitum-currency-key-v0.0.1
                         example: mitum-currency-key-v0.0.1
@@ -2271,12 +2266,12 @@ components:
 
     ManifestHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: block-manifest-v0.0.1
             _links:
@@ -2284,7 +2279,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2292,7 +2287,7 @@ components:
                           example: /block/244/manifest
                 next:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2300,7 +2295,7 @@ components:
                           example: /block/245/manifest
                 alternate:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2308,7 +2303,7 @@ components:
                           example: /block/CHboAfLXbm7kFsr2JhdrJb2Qg4WL96YmK8E6t1NPABeB/manifest
                 block:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2316,7 +2311,7 @@ components:
                           example: /block/244
                 block:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2329,7 +2324,7 @@ components:
                           example: true
                 manifest:{height}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2342,7 +2337,7 @@ components:
                           example: true
                 block:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2355,7 +2350,7 @@ components:
                           example: true
                 manifest:{hash}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2367,26 +2362,26 @@ components:
                           default: true
                           example: true
             _embedded:
-              $ref: '#/components/schemas/Manifest'
+              $ref: "#/components/schemas/Manifest"
 
     AccountHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#components/schemas/Hint'
+                - $ref: "#components/schemas/Hint"
                 - type: string
                   example: mitum-currency-account-value-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/AccountValue'
+              $ref: "#/components/schemas/AccountValue"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2396,7 +2391,7 @@ components:
                   description: >-
                     *operation*s, which are related of the account.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2406,7 +2401,7 @@ components:
                   description: >-
                     *operation*s, which are related of the account after offset.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2420,7 +2415,7 @@ components:
                   description: >-
                     *operation*s, which are related of the account after offset by reverse order.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2434,7 +2429,7 @@ components:
                   description: >-
                     Request `/block/{height}`.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2442,7 +2437,7 @@ components:
                           example: /block/244
                 previous_block:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2454,14 +2449,14 @@ components:
         *FactSign* represents the *signer* signs the *operation* with valid *hash* of *operation*.
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -2485,13 +2480,13 @@ components:
     BaseFact:
       type: object
       required:
-      - _hint
-      - hash
-      - token
+        - _hint
+        - hash
+        - token
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-create-accounts-operation-fact-v0.0.1
               example: mitum-currency-create-accounts-operation-fact-v0.0.1
@@ -2507,22 +2502,22 @@ components:
     Operation:
       type: object
       required:
-      - _hint
-      - fact_signs
-      - hash
-      - fact
-      - memo
+        - _hint
+        - fact_signs
+        - hash
+        - fact
+        - memo
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-create-accounts-operation-v0.0.1
               example: mitum-currency-create-accounts-operation-v0.0.1
         fact_signs:
           type: array
           items:
-            $ref: '#/components/schemas/FactSign'
+            $ref: "#/components/schemas/FactSign"
         hash:
           description: operation hash
           type: string
@@ -2531,13 +2526,13 @@ components:
         fact:
           type: object
           required:
-          - _hint
-          - hash
-          - token
+            - _hint
+            - hash
+            - token
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   default: mitum-currency-create-accounts-operation-v0.0.1
                   example: mitum-currency-create-accounts-operation-v0.0.1
@@ -2556,22 +2551,22 @@ components:
 
     OperationHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-operation-value-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/OperationValue'
+              $ref: "#/components/schemas/OperationValue"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2580,7 +2575,7 @@ components:
                 block:
                   description: request `/block/{height}` of the operation
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2589,29 +2584,28 @@ components:
                 manifest:
                   description: request `/block/{height}/manifest` of the operation
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
                           type: string
                           example: /block/244/manifest
 
-
     AccountOperationsHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _embedded:
               type: array
               items:
-                $ref: '#/components/schemas/OperationHAL'
+                $ref: "#/components/schemas/OperationHAL"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2619,7 +2613,7 @@ components:
                           example: /account/B5ev8dDUpAdkCUnm8N2RQwUM86kcCLQqhCBd78FTxhtv:mca-v0.0.1/operations
                 account:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2629,7 +2623,7 @@ components:
                   description: >-
                     next operations with *offset*.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2639,7 +2633,7 @@ components:
                   description: >-
                     operations by reverse oder of self.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2648,19 +2642,19 @@ components:
 
     ManifestsHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _embedded:
               type: array
               items:
-                $ref: '#/components/schemas/ManifestHAL'
+                $ref: "#/components/schemas/ManifestHAL"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2670,7 +2664,7 @@ components:
                   description: >-
                     next manifests with *offset*.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2680,7 +2674,7 @@ components:
                   description: >-
                     manifests by reverse oder of self.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2689,19 +2683,19 @@ components:
 
     OperationsHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _embedded:
               type: array
               items:
-                $ref: '#/components/schemas/OperationHAL'
+                $ref: "#/components/schemas/OperationHAL"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2711,7 +2705,7 @@ components:
                   description: >-
                     next operations with *offset*.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2721,7 +2715,7 @@ components:
                   description: >-
                     operations by reverse oder of self.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2730,19 +2724,19 @@ components:
 
     OperationsByHeightHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _embedded:
               type: array
               items:
-                $ref: '#/components/schemas/OperationHAL'
+                $ref: "#/components/schemas/OperationHAL"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2752,7 +2746,7 @@ components:
                   description: >-
                     next operations with *offset*.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2762,7 +2756,7 @@ components:
                   description: >-
                     operations by reverse oder of self.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2771,7 +2765,7 @@ components:
 
     OperationBuilderHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _links:
@@ -2779,7 +2773,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2789,7 +2783,7 @@ components:
                   description: >-
                     request the template of *create-accounts* operation.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2804,7 +2798,7 @@ components:
                   description: >-
                     request the template of *key-updater* operation.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2819,7 +2813,7 @@ components:
                   description: >-
                     request the template of *transfers* operation.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2834,7 +2828,7 @@ components:
                   description: >-
                     request the template of *currency-register* operation.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2849,7 +2843,7 @@ components:
                   description: >-
                     request the template of *currency-policy-updater* operation.
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -2863,12 +2857,12 @@ components:
 
     CreateAccountsSearch:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-v0.0.1
                   default: mitum-currency-create-accounts-operation-v0.0.1
@@ -2876,19 +2870,19 @@ components:
               type: string
               example: AJADCiBpkppv236vrRXzVVnUKoVDE2v6HvtTcZg3C2sF
             fact:
-              $ref: '#/components/schemas/CreateAccountsFactSearch'
+              $ref: "#/components/schemas/CreateAccountsFactSearch"
 
     CreateAccountsFactSearch:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - sender
-          - items
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-fact-v0.0.1
                   default: mitum-currency-create-accounts-operation-fact-v0.0.1
@@ -2906,7 +2900,7 @@ components:
               example: MjAyMS0wOC0yN1QwNjo1MDowNi41OTZa
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - type: string
                   example: ETox5FKJFknprZv7iJk5KnKmqR9kz7fWTEWkHCaDkad3:mca-v0.0.1
             items:
@@ -2914,98 +2908,98 @@ components:
               items:
                 type: object
                 required:
-                - _hint
-                - keys
-                - amount
+                  - _hint
+                  - keys
+                  - amount
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-create-accounts-single-amount-v0.0.1
                   keys:
-                    $ref: '#/components/schemas/AccountKeys'
+                    $ref: "#/components/schemas/AccountKeys"
                   amounts:
                     type: array
                     items:
                       description: The initial balance of account.
                       allOf:
-                        - $ref: '#/components/schemas/Amount'
+                        - $ref: "#/components/schemas/Amount"
 
     CreateAccounts:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-v0.0.1
             hash:
               type: string
               example: AJADCiBpkppv236vrRXzVVnUKoVDE2v6HvtTcZg3C2sF
             fact:
-              $ref: '#/components/schemas/CreateAccountsFact'
-    
+              $ref: "#/components/schemas/CreateAccountsFact"
+
     CreateAccountsSend:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-v0.0.1
             hash:
               type: string
               example: 7afVZcu9MQc2yXdN6soWYy7dDqoqhiT2LYWWQ7j6ak1E
             fact:
-              $ref: '#/components/schemas/CreateAccountsFactSend'
+              $ref: "#/components/schemas/CreateAccountsFactSend"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignSeal'
+                $ref: "#/components/schemas/FactSignSeal"
             memo:
               type: string
               example: example
 
     KeyUpdater:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/KeyUpdaterFact'
+              $ref: "#/components/schemas/KeyUpdaterFact"
 
     KeyUpdaterSearch:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-v0.0.1
                   default: mitum-currency-keyupdater-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/KeyUpdaterFactSearch'
-    
+              $ref: "#/components/schemas/KeyUpdaterFactSearch"
+
     KeyUpdaterSend:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-v0.0.1
             hash:
@@ -3013,30 +3007,30 @@ components:
               format: hash
               example: GtubjX2yXSXMEDrjh6ge4QYe6DKqY8iLps1seM4qoZ5o
             fact:
-              $ref: '#/components/schemas/KeyUpdaterFactSend'
+              $ref: "#/components/schemas/KeyUpdaterFactSend"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignKeyUpdater'
+                $ref: "#/components/schemas/FactSignKeyUpdater"
             memo:
               type: string
               example: example
-    
+
     KeyUpdaterFactSend:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - target
-          - keys
-          - currency
+            - _hint
+            - hash
+            - token
+            - target
+            - keys
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-fact-v0.0.1
                   default: mitum-currency-keyupdater-operation-fact-v0.0.1
@@ -3054,26 +3048,26 @@ components:
               example: MjAyMS0wOC0zMVQwNToxNzowOC4xMDA5MTAzNDda
             target:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: Replace your own account owner address.
                 - type: string
                   example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
             keys:
-              $ref: '#/components/schemas/AccountKeysKeyUpdater'
+              $ref: "#/components/schemas/AccountKeysKeyUpdater"
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyID'
-    
+                - $ref: "#/components/schemas/CurrencyID"
+
     AccountKeysKeyUpdater:
       type: object
       required:
-      - _hint
-      - keys
-      - threshold
+        - _hint
+        - keys
+        - threshold
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-keys-v0.0.1
               example: mitum-currency-keys-v0.0.1
@@ -3084,24 +3078,24 @@ components:
         keys:
           type: array
           items:
-            $ref: '#/components/schemas/AccountKeyKeyUpdater'
+            $ref: "#/components/schemas/AccountKeyKeyUpdater"
         threshold:
           description: >-
             *threshold* should be `> 0` and `<= 100`.
           type: integer
           format: int32
           example: 100
-          
+
     AccountKeyKeyUpdater:
       type: object
       required:
-      - _hint
-      - key
-      - weight
+        - _hint
+        - key
+        - weight
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-key-v0.0.1
               example: mitum-currency-key-v0.0.1
@@ -3116,19 +3110,19 @@ components:
             *weight* should be `> 1` and  `<= 100`.
           type: integer
           format: int32
-          example: 100   
+          example: 100
 
     FactSignKeyUpdater:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3151,39 +3145,39 @@ components:
 
     Transfers:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/TransfersFact'
+              $ref: "#/components/schemas/TransfersFact"
 
     TransfersSearch:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-v0.0.1
                   default: mitum-currency-transfers-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/TransfersFactSearch'        
-    
+              $ref: "#/components/schemas/TransfersFactSearch"
+
     TransfersSend:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-v0.0.1
             hash:
@@ -3191,11 +3185,11 @@ components:
               format: hash
               example: 3tGsPFzA9nfmEHECWrjKzN65cHYZpnM54uJQSkb1mWT4
             fact:
-              $ref: '#/components/schemas/TransfersFactSend'
+              $ref: "#/components/schemas/TransfersFactSend"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignTransfers'
+                $ref: "#/components/schemas/FactSignTransfers"
             memo:
               type: string
               example: example
@@ -3203,14 +3197,14 @@ components:
     FactSignTransfers:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3229,22 +3223,22 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T05:27:32.050276077Z"      
+          example: "2021-08-31T05:27:32.050276077Z"
 
     TransfersFactSend:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - sender
-          - items
+            - _hint
+            - hash
+            - token
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-fact-v0.0.1
                   default: mitum-currency-transfers-operation-fact-v0.0.1
@@ -3262,7 +3256,7 @@ components:
               example: MjAyMS0wOC0zMVQwNToyNzozMi4wNTAwNjU0NzFa
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: Replace your own sender address.
                 - type: string
                   example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
@@ -3271,17 +3265,17 @@ components:
               items:
                 type: object
                 required:
-                - receiver
-                - amount
+                  - receiver
+                  - amount
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-transfers-item-single-amount-v0.0.1
                   receiver:
                     allOf:
-                      - $ref: '#/components/schemas/AccountAddress'
+                      - $ref: "#/components/schemas/AccountAddress"
                       - description: Receiver account address.
                       - type: string
                         example: 4roMiuuT2oWZfi8ycuytjcAPCj7LwsYbdJ6HpYmXxdym:mca-v0.0.1
@@ -3290,19 +3284,19 @@ components:
                     items:
                       description: The amount to transfer.
                       allOf:
-                        - $ref: '#/components/schemas/AmountTransfers'      
+                        - $ref: "#/components/schemas/AmountTransfers"
 
     AmountTransfers:
       type: object
       required:
-      - _hint
-      - hash
-      - amount
-      - currency
+        - _hint
+        - hash
+        - amount
+        - currency
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-amount-v0.0.1
               example: mitum-currency-amount-v0.0.1
@@ -3312,46 +3306,46 @@ components:
           example: "100"
           default: "100"
         currency:
-          $ref: '#/components/schemas/CurrencyID'      
-    
+          $ref: "#/components/schemas/CurrencyID"
+
     CurrencyRegister:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-v0.0.1
             fact:
               oneOf:
-                - $ref: '#/components/schemas/CurrencyRegisterFactNil'
-                - $ref: '#/components/schemas/CurrencyRegisterFactFixed'
-                - $ref: '#/components/schemas/CurrencyRegisterFactRatio'
+                - $ref: "#/components/schemas/CurrencyRegisterFactNil"
+                - $ref: "#/components/schemas/CurrencyRegisterFactFixed"
+                - $ref: "#/components/schemas/CurrencyRegisterFactRatio"
 
     CurrencyRegisterSearch:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-v0.0.1
                   default: mitum-currency-currency-register-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/CurrencyRegisterFactSearch'
+              $ref: "#/components/schemas/CurrencyRegisterFactSearch"
 
     CurrencyRegisterNil:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-v0.0.1
             hash:
@@ -3359,11 +3353,11 @@ components:
               format: hash
               example: 3rDNBZtWJN79XfUGESU6nSFqwM4P5zHGM1ssd8KMpV7p
             fact:
-              $ref: '#/components/schemas/CurrencyRegisterFactNil'
+              $ref: "#/components/schemas/CurrencyRegisterFactNil"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignCurrencyRegisterNil'
+                $ref: "#/components/schemas/FactSignCurrencyRegisterNil"
             memo:
               type: string
               example: example
@@ -3371,14 +3365,14 @@ components:
     FactSignCurrencyRegisterNil:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3397,16 +3391,16 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T05:39:32.649341546Z"   
-              
+          example: "2021-08-31T05:39:32.649341546Z"
+
     CurrencyRegisterFixed:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-v0.0.1
             hash:
@@ -3414,11 +3408,11 @@ components:
               format: hash
               example: 3mAWZ1m2V8REA9Kh8RTrWBnhtATbGPncbkq2nE2aRLmz
             fact:
-              $ref: '#/components/schemas/CurrencyRegisterFactFixed'
+              $ref: "#/components/schemas/CurrencyRegisterFactFixed"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignCurrencyRegisterFixed'
+                $ref: "#/components/schemas/FactSignCurrencyRegisterFixed"
             memo:
               type: string
               example: example
@@ -3426,14 +3420,14 @@ components:
     FactSignCurrencyRegisterFixed:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3452,16 +3446,16 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T06:00:48.485785875Z"     
+          example: "2021-08-31T06:00:48.485785875Z"
 
     CurrencyRegisterRatio:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-v0.0.1
             hash:
@@ -3469,11 +3463,11 @@ components:
               format: hash
               example: 4jys2knDproZKaidqQw2vumj6TfbxVznYL2EjvhGd1yc
             fact:
-              $ref: '#/components/schemas/CurrencyRegisterFactRatio'
+              $ref: "#/components/schemas/CurrencyRegisterFactRatio"
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignCurrencyRegisterRatio'
+                $ref: "#/components/schemas/FactSignCurrencyRegisterRatio"
             memo:
               type: string
               example: example
@@ -3481,14 +3475,14 @@ components:
     FactSignCurrencyRegisterRatio:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3507,43 +3501,43 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T06:09:54.631444603Z"     
+          example: "2021-08-31T06:09:54.631444603Z"
 
     CurrencyPolicyUpdater:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFact'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFact"
 
     CurrencyPolicyUpdaterSearch:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-v0.0.1
             fact:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFactSearch'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFactSearch"
 
     CurrencyPolicyUpdaterNil:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-v0.0.1
             hash:
@@ -3553,9 +3547,9 @@ components:
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignPolicyUpdaterNil'
+                $ref: "#/components/schemas/FactSignPolicyUpdaterNil"
             fact:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFactNil'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFactNil"
             memo:
               type: string
               example: example
@@ -3563,14 +3557,14 @@ components:
     FactSignPolicyUpdaterNil:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3589,16 +3583,16 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T06:21:51.202215525Z"         
+          example: "2021-08-31T06:21:51.202215525Z"
 
     CurrencyPolicyUpdaterFixed:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-v0.0.1
             hash:
@@ -3608,9 +3602,9 @@ components:
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignPolicyUpdaterFixed'
+                $ref: "#/components/schemas/FactSignPolicyUpdaterFixed"
             fact:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFactFixed'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFactFixed"
             memo:
               type: string
               example: example
@@ -3618,14 +3612,14 @@ components:
     FactSignPolicyUpdaterFixed:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3644,16 +3638,16 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T06:28:04.671070581Z"  
+          example: "2021-08-31T06:28:04.671070581Z"
 
     CurrencyPolicyUpdaterRatio:
       allOf:
-        - $ref: '#/components/schemas/Operation'
+        - $ref: "#/components/schemas/Operation"
         - type: object
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-v0.0.1
             hash:
@@ -3663,9 +3657,9 @@ components:
             fact_signs:
               type: array
               items:
-                $ref: '#/components/schemas/FactSignPolicyUpdaterRatio'
+                $ref: "#/components/schemas/FactSignPolicyUpdaterRatio"
             fact:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFactRatio'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFactRatio"
             memo:
               type: string
               example: example
@@ -3673,14 +3667,14 @@ components:
     FactSignPolicyUpdaterRatio:
       type: object
       required:
-      - _hint
-      - signer
-      - signature
-      - signed_at
+        - _hint
+        - signer
+        - signature
+        - signed_at
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: base-fact-sign-v0.0.1
               default: base-fact-sign-v0.0.1
@@ -3699,19 +3693,19 @@ components:
           description: time to be signed
           type: string
           format: date-time
-          example: "2021-08-31T06:34:39.267499965Z" 
+          example: "2021-08-31T06:34:39.267499965Z"
 
     CreateAccountsFact:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - sender
-          - items
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-fact-v0.0.1
                   default: mitum-currency-create-accounts-operation-fact-v0.0.1
@@ -3729,7 +3723,7 @@ components:
               example: MjAyMS0wOC0yN1QwNjo1MDowNi41OTZa
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - type: string
                   example: ETox5FKJFknprZv7iJk5KnKmqR9kz7fWTEWkHCaDkad3:mca-v0.0.1
             items:
@@ -3737,40 +3731,40 @@ components:
               items:
                 type: object
                 required:
-                - _hint
-                - keys
-                - amount
+                  - _hint
+                  - keys
+                  - amount
 
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-create-accounts-single-amount-v0.0.1
                   keys:
-                    $ref: '#/components/schemas/AccountKeys'
+                    $ref: "#/components/schemas/AccountKeys"
                   amounts:
                     type: array
                     items:
                       description: The initial balance of account.
                       allOf:
-                        - $ref: '#/components/schemas/Amount'
+                        - $ref: "#/components/schemas/Amount"
 
     KeyUpdaterFact:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - target
-          - keys
-          - currency
+            - _hint
+            - hash
+            - token
+            - target
+            - keys
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-fact-v0.0.1
                   default: mitum-currency-keyupdater-operation-fact-v0.0.1
@@ -3788,29 +3782,29 @@ components:
               example: cmFpc2VkIGJ5
             target:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: Replace your own account owner address.
             keys:
-              $ref: '#/components/schemas/AccountKeys'
+              $ref: "#/components/schemas/AccountKeys"
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyID'
+                - $ref: "#/components/schemas/CurrencyID"
 
     KeyUpdaterFactSearch:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - target
-          - keys
-          - currency
+            - _hint
+            - hash
+            - token
+            - target
+            - keys
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-keyupdater-operation-fact-v0.0.1
                   default: mitum-currency-keyupdater-operation-fact-v0.0.1
@@ -3828,28 +3822,28 @@ components:
               example: cmFpc2VkIGJ5
             target:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: account address to update keys
             keys:
-              $ref: '#/components/schemas/AccountKeys'
+              $ref: "#/components/schemas/AccountKeys"
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyID'
+                - $ref: "#/components/schemas/CurrencyID"
 
     TransfersFact:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - sender
-          - items
+            - _hint
+            - hash
+            - token
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-fact-v0.0.1
                   default: mitum-currency-transfers-operation-fact-v0.0.1
@@ -3867,46 +3861,46 @@ components:
               example: cmFpc2VkIGJ5
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: Replace your own sender address.
             items:
               type: array
               items:
                 type: object
                 required:
-                - receiver
-                - amount
+                  - receiver
+                  - amount
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-transfers-item-single-amount-v0.0.1
                   receiver:
                     allOf:
-                      - $ref: '#/components/schemas/AccountAddress'
+                      - $ref: "#/components/schemas/AccountAddress"
                       - description: Receiver account address.
                   amounts:
                     type: array
                     items:
                       description: The amount to transfer.
                       allOf:
-                        - $ref: '#/components/schemas/Amount'
+                        - $ref: "#/components/schemas/Amount"
 
     TransfersFactSearch:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - sender
-          - items
+            - _hint
+            - hash
+            - token
+            - sender
+            - items
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-transfers-operation-fact-v0.0.1
                   default: mitum-currency-transfers-operation-fact-v0.0.1
@@ -3924,45 +3918,45 @@ components:
               example: cmFpc2VkIGJ5
             sender:
               allOf:
-                - $ref: '#/components/schemas/AccountAddress'
+                - $ref: "#/components/schemas/AccountAddress"
                 - description: Sender account address
             items:
               type: array
               items:
                 type: object
                 required:
-                - receiver
-                - amount
+                  - receiver
+                  - amount
                 properties:
                   _hint:
                     allOf:
-                      - $ref: '#/components/schemas/Hint'
+                      - $ref: "#/components/schemas/Hint"
                       - type: string
                         example: mitum-currency-transfers-item-single-amount-v0.0.1
                   receiver:
                     allOf:
-                      - $ref: '#/components/schemas/AccountAddress'
+                      - $ref: "#/components/schemas/AccountAddress"
                       - description: Receiver account address.
                   amounts:
                     type: array
                     items:
                       description: The amount to transfer.
                       allOf:
-                        - $ref: '#/components/schemas/Amount'
+                        - $ref: "#/components/schemas/Amount"
 
     CurrencyRegisterFact:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
+            - _hint
+            - hash
+            - token
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
@@ -3980,21 +3974,21 @@ components:
               example: cmFpc2VkIGJ5
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyDesign'
+                - $ref: "#/components/schemas/CurrencyDesign"
 
     CurrencyRegisterFactSearch:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
+            - _hint
+            - hash
+            - token
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
@@ -4012,21 +4006,21 @@ components:
               example: cmFpc2VkIGJ5
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyDesign'    
+                - $ref: "#/components/schemas/CurrencyDesign"
 
     CurrencyRegisterFactNil:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
+            - _hint
+            - hash
+            - token
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
@@ -4044,44 +4038,44 @@ components:
               example: MjAyMS0wOC0zMVQwNTozOTozMi42NDkxMzk2MzFa
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyDesignRegisterNil'
+                - $ref: "#/components/schemas/CurrencyDesignRegisterNil"
 
     CurrencyDesignRegisterNil:
       type: object
       required:
-      - _hint
-      - amount
-      - genesis_account
-      - policy
+        - _hint
+        - amount
+        - genesis_account
+        - policy
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-design-v0.0.1
               example: mitum-currency-currency-design-v0.0.1
         amount:
-          $ref: '#/components/schemas/AmountRegister'
+          $ref: "#/components/schemas/AmountRegister"
         genesis_account:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: genesis account address, which will hold genesis balance
             - type: string
               example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
         policy:
-          $ref: '#/components/schemas/CurrencyPolicyRegisterNil'
+          $ref: "#/components/schemas/CurrencyPolicyRegisterNil"
 
     CurrencyPolicyRegisterNil:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4089,19 +4083,19 @@ components:
           type: string
           example: "100"
         feeer:
-          $ref: '#/components/schemas/NilFeeer'
-      
+          $ref: "#/components/schemas/NilFeeer"
+
     AmountRegister:
       type: object
       required:
-      - _hint
-      - hash
-      - amount
-      - currency
+        - _hint
+        - hash
+        - amount
+        - currency
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-amount-v0.0.1
               example: mitum-currency-amount-v0.0.1
@@ -4112,23 +4106,23 @@ components:
           default: "10000"
         currency:
           allOf:
-            - $ref: '#/components/schemas/CurrencyID'
+            - $ref: "#/components/schemas/CurrencyID"
             - type: string
-              example: ABC   
+              example: ABC
 
     CurrencyRegisterFactFixed:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
+            - _hint
+            - hash
+            - token
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
@@ -4146,44 +4140,44 @@ components:
               example: MjAyMS0wOC0zMVQwNjowMDo0OC40ODU1NjQzNTda
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyDesignRegisterFixed'      
+                - $ref: "#/components/schemas/CurrencyDesignRegisterFixed"
 
     CurrencyDesignRegisterFixed:
       type: object
       required:
-      - _hint
-      - amount
-      - genesis_account
-      - policy
+        - _hint
+        - amount
+        - genesis_account
+        - policy
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-design-v0.0.1
               example: mitum-currency-currency-design-v0.0.1
         amount:
-          $ref: '#/components/schemas/AmountRegister'
+          $ref: "#/components/schemas/AmountRegister"
         genesis_account:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: genesis account address, which will hold genesis balance
             - type: string
               example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
         policy:
-          $ref: '#/components/schemas/CurrencyPolicyRegisterFixed'     
+          $ref: "#/components/schemas/CurrencyPolicyRegisterFixed"
 
     CurrencyPolicyRegisterFixed:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4192,7 +4186,7 @@ components:
           example: "100"
         feeer:
           allOf:
-            - $ref: '#/components/schemas/FixedFeeer'
+            - $ref: "#/components/schemas/FixedFeeer"
             - type: object
               properties:
                 receiver:
@@ -4201,17 +4195,17 @@ components:
 
     CurrencyRegisterFactRatio:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
+            - _hint
+            - hash
+            - token
+            - currency
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
@@ -4229,44 +4223,44 @@ components:
               example: MjAyMS0wOC0zMVQwNjowOTo1NC42MjExNjM4MTda
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyDesignRegisterRatio'
+                - $ref: "#/components/schemas/CurrencyDesignRegisterRatio"
 
     CurrencyDesignRegisterRatio:
       type: object
       required:
-      - _hint
-      - amount
-      - genesis_account
-      - policy
+        - _hint
+        - amount
+        - genesis_account
+        - policy
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-design-v0.0.1
               example: mitum-currency-currency-design-v0.0.1
         amount:
-          $ref: '#/components/schemas/AmountRegister'
+          $ref: "#/components/schemas/AmountRegister"
         genesis_account:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: genesis account address, which will hold genesis balance
             - type: string
               example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
         policy:
-          $ref: '#/components/schemas/CurrencyPolicyRegisterRatio'
-          
+          $ref: "#/components/schemas/CurrencyPolicyRegisterRatio"
+
     CurrencyPolicyRegisterRatio:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4275,27 +4269,27 @@ components:
           example: "100"
         feeer:
           allOf:
-            - $ref: '#/components/schemas/RatioFeeer'
+            - $ref: "#/components/schemas/RatioFeeer"
             - type: object
               properties:
                 receiver:
                   type: string
-                  example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1    
+                  example: H6cTzwGDPk1CcPH7uHHrfivAeHBKgLrS81JDvBfPXWhD:mca-v0.0.1
 
     CurrencyPolicyUpdaterFact:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
-          - policy
+            - _hint
+            - hash
+            - token
+            - currency
+            - policy
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
@@ -4313,25 +4307,25 @@ components:
               example: cmFpc2VkIGJ5
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyID'
+                - $ref: "#/components/schemas/CurrencyID"
             policy:
               allOf:
-                - $ref: '#/components/schemas/CurrencyPolicy'
+                - $ref: "#/components/schemas/CurrencyPolicy"
 
     CurrencyPolicyUpdaterFactSearch:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
-          - policy
+            - _hint
+            - hash
+            - token
+            - currency
+            - policy
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
@@ -4349,25 +4343,25 @@ components:
               example: cmFpc2VkIGJ5
             currency:
               allOf:
-                - $ref: '#/components/schemas/CurrencyID'
+                - $ref: "#/components/schemas/CurrencyID"
             policy:
               allOf:
-                - $ref: '#/components/schemas/CurrencyPolicy'
+                - $ref: "#/components/schemas/CurrencyPolicy"
 
     CurrencyPolicyUpdaterFactNil:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
-          - policy
+            - _hint
+            - hash
+            - token
+            - currency
+            - policy
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
@@ -4388,19 +4382,19 @@ components:
               example: ABC
             policy:
               allOf:
-                - $ref: '#/components/schemas/CurrencyPolicyPolicyUpdaterNil'
+                - $ref: "#/components/schemas/CurrencyPolicyPolicyUpdaterNil"
 
     CurrencyPolicyPolicyUpdaterNil:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4408,23 +4402,22 @@ components:
           type: string
           example: "100"
         feeer:
-          $ref: '#/components/schemas/NilFeeer'
-
+          $ref: "#/components/schemas/NilFeeer"
 
     CurrencyPolicyUpdaterFactFixed:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
-          - policy
+            - _hint
+            - hash
+            - token
+            - currency
+            - policy
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
@@ -4445,19 +4438,19 @@ components:
               example: ABC
             policy:
               allOf:
-                - $ref: '#/components/schemas/CurrencyPolicyPolicyUpdaterFixed'
+                - $ref: "#/components/schemas/CurrencyPolicyPolicyUpdaterFixed"
 
     CurrencyPolicyPolicyUpdaterFixed:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4466,7 +4459,7 @@ components:
           example: "100"
         feeer:
           allOf:
-            - $ref: '#/components/schemas/FixedFeeer'
+            - $ref: "#/components/schemas/FixedFeeer"
             - type: object
               properties:
                 receiver:
@@ -4475,18 +4468,18 @@ components:
 
     CurrencyPolicyUpdaterFactRatio:
       allOf:
-        - $ref: '#/components/schemas/BaseFact'
+        - $ref: "#/components/schemas/BaseFact"
         - type: object
           required:
-          - _hint
-          - hash
-          - token
-          - currency
-          - policy
+            - _hint
+            - hash
+            - token
+            - currency
+            - policy
           properties:
             _hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
@@ -4507,19 +4500,19 @@ components:
               example: ABC
             policy:
               allOf:
-                - $ref: '#/components/schemas/CurrencyPolicyPolicyUpdaterRatio'
+                - $ref: "#/components/schemas/CurrencyPolicyPolicyUpdaterRatio"
 
     CurrencyPolicyPolicyUpdaterRatio:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -4528,7 +4521,7 @@ components:
           example: "100"
         feeer:
           allOf:
-            - $ref: '#/components/schemas/RatioFeeer'
+            - $ref: "#/components/schemas/RatioFeeer"
             - type: object
               properties:
                 receiver:
@@ -4537,20 +4530,20 @@ components:
 
     OperationTemplateCreateAccountsFactHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-fact-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/CreateAccountsFact'
+              $ref: "#/components/schemas/CreateAccountsFact"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4564,7 +4557,7 @@ components:
                       example: cmFpc2VkIGJ5
                     sender:
                       allOf:
-                        - $ref: '#/components/schemas/AccountAddress'
+                        - $ref: "#/components/schemas/AccountAddress"
                         - description: >
                             **example** sender *address*
                     items.keys.keys.key:
@@ -4576,7 +4569,7 @@ components:
                     currency:
                       description: >
                         **example** new account initial currency
-                      $ref: '#/components/schemas/CurrencyID'
+                      $ref: "#/components/schemas/CurrencyID"
                     items.big:
                       description: >
                         **example** amount of items
@@ -4587,7 +4580,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4597,7 +4590,7 @@ components:
 
     OperationTemplateKeyUpdaterFactHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
@@ -4612,11 +4605,11 @@ components:
                   default: mitum-currency-keyupdater-operation-fact-v0.0.1
                   example: mitum-currency-keyupdater-operation-fact-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/KeyUpdaterFact'
+              $ref: "#/components/schemas/KeyUpdaterFact"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4630,7 +4623,7 @@ components:
                       example: cmFpc2VkIGJ5
                     target:
                       allOf:
-                        - $ref: '#/components/schemas/AccountAddress'
+                        - $ref: "#/components/schemas/AccountAddress"
                         - description: >
                             **example** key owner *address*
                     keys.keys.key:
@@ -4644,7 +4637,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4654,7 +4647,7 @@ components:
 
     OperationTemplateTransfersFactHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
@@ -4669,11 +4662,11 @@ components:
                   default: mitum-currency-transfers-operation-fact-v0.0.1
                   example: mitum-currency-transfers-operation-fact-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/TransfersFact'
+              $ref: "#/components/schemas/TransfersFact"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4687,12 +4680,12 @@ components:
                       example: cmFpc2VkIGJ5
                     sender:
                       allOf:
-                        - $ref: '#/components/schemas/AccountAddress'
+                        - $ref: "#/components/schemas/AccountAddress"
                         - description: >
                             **example** sender *address*
                     items.receiver:
                       allOf:
-                        - $ref: '#/components/schemas/AccountAddress'
+                        - $ref: "#/components/schemas/AccountAddress"
                         - description: >
                             **example** receiver address
                     items.amount:
@@ -4705,7 +4698,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4715,7 +4708,7 @@ components:
 
     OperationTemplateCurrencyRegisterFactHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
@@ -4730,11 +4723,11 @@ components:
                   default: mitum-currency-currency-register-operation-fact-v0.0.1
                   example: mitum-currency-currency-register-operation-fact-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/CurrencyRegisterFact'
+              $ref: "#/components/schemas/CurrencyRegisterFact"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4748,13 +4741,13 @@ components:
                       example: cmFpc2VkIGJ5
                     currency:
                       allOf:
-                        - $ref: '#/components/schemas/CurrencyDesign'
+                        - $ref: "#/components/schemas/CurrencyDesign"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4764,7 +4757,7 @@ components:
 
     OperationTemplateCurrencyPolicyUpdaterFactHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
@@ -4779,11 +4772,11 @@ components:
                   default: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
                   example: mitum-currency-currency-policy-updater-operation-fact-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/CurrencyPolicyUpdaterFact'
+              $ref: "#/components/schemas/CurrencyPolicyUpdaterFact"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4797,16 +4790,16 @@ components:
                       example: cmFpc2VkIGJ5
                     currency:
                       allOf:
-                        - $ref: '#/components/schemas/CurrencyID'
+                        - $ref: "#/components/schemas/CurrencyID"
                     policy:
                       allOf:
-                        - $ref: '#/components/schemas/CurrencyPolicy'
+                        - $ref: "#/components/schemas/CurrencyPolicy"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4816,30 +4809,30 @@ components:
 
     OperationTemplateCreateAccountsHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-v0.0.1
             _embedded:
               allOf:
-                - $ref: '#/components/schemas/Operation'
+                - $ref: "#/components/schemas/Operation"
                 - type: object
                   properties:
                     _hint:
                       allOf:
-                        - $ref: '#/components/schemas/Hint'
+                        - $ref: "#/components/schemas/Hint"
                         - type: string
                           example: mitum-currency-create-accounts-operation-v0.0.1
                     fact:
-                      $ref: '#/components/schemas/CreateAccountsFactSearch'
+                      $ref: "#/components/schemas/CreateAccountsFactSearch"
             _extras:
               type: object
               required:
-              - default
+                - default
               properties:
                 default:
                   description: >-
@@ -4869,7 +4862,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4879,22 +4872,22 @@ components:
 
     SealHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: seal-v0.0.1
             _embedded:
-              $ref: '#/components/schemas/SealSearch'
+              $ref: "#/components/schemas/SealSearch"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4903,7 +4896,7 @@ components:
                           default: " "
                 operation:0:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4913,32 +4906,32 @@ components:
 
     OperationTemplateCreateAccountsSignHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-create-accounts-operation-v0.0.1
             _embedded:
               allOf:
-                - $ref: '#/components/schemas/Operation'
+                - $ref: "#/components/schemas/Operation"
                 - type: object
                   properties:
                     _hint:
                       allOf:
-                        - $ref: '#/components/schemas/Hint'
+                        - $ref: "#/components/schemas/Hint"
                         - type: string
                           example: mitum-currency-create-accounts-operation-v0.0.1
                     fact:
-                      $ref: '#/components/schemas/CreateAccountsFactSearch'
+                      $ref: "#/components/schemas/CreateAccountsFactSearch"
             _links:
               type: object
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4946,10 +4939,9 @@ components:
                           example: /builder/operation/sign
                           default: /builder/operation/sign
 
-
     CurrenciesHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
             _links:
@@ -4957,7 +4949,7 @@ components:
               properties:
                 self:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4966,7 +4958,7 @@ components:
                           example: /currency
                 currency:MCC:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4975,7 +4967,7 @@ components:
                           example: /currency/MCC
                 currency:{currency_id}:
                   allOf:
-                    - $ref: '#/components/schemas/HALLink'
+                    - $ref: "#/components/schemas/HALLink"
                     - type: object
                       properties:
                         href:
@@ -4989,59 +4981,59 @@ components:
 
     CurrencyHAL:
       allOf:
-        - $ref: '#/components/schemas/HAL'
+        - $ref: "#/components/schemas/HAL"
         - type: object
           properties:
-             hint:
+            hint:
               allOf:
-                - $ref: '#/components/schemas/Hint'
+                - $ref: "#/components/schemas/Hint"
                 - type: string
                   example: mitum-currency-currency-design-v0.0.1
-             _embedded:
-                $ref: '#/components/schemas/CurrencyDesign'
-             _links:
-                type: object
-                properties:
-                  self:
-                    allOf:
-                      - $ref: '#/components/schemas/HALLink'
-                      - type: object
-                        properties:
-                          href:
-                            type: string
-                            default: /currency/MCC
-                            example: /currency/MCC
-                  operations:
-                    allOf:
-                      - $ref: '#/components/schemas/HALLink'
-                      - type: object
-                        properties:
-                          href:
-                            type: string
-                            default: /block/operation/Bu9tSW5zdFwzeAgnCLUWV8ensutagkPB4qxJDr7K87WX
-                            example: /block/operation/Bu9tSW5zdFwzeAgnCLUWV8ensutagkPB4qxJDr7K87WX
-                  block:
-                    allOf:
-                      - $ref: '#/components/schemas/HALLink'
-                      - type: object
-                        properties:
-                          href:
-                            type: string
-                            default: /block/0
-                            example: /block/0
-                  currency:{currencyid}:
-                    allOf:
-                      - $ref: '#/components/schemas/HALLink'
-                      - type: object
-                        properties:
-                          href:
-                            type: string
-                            default: /currency/{currencyid:.*}
-                            example: /currency/{currencyid:.*}
-                          templated:
-                            type: boolean
-                            default: true
-                            example: true
+            _embedded:
+              $ref: "#/components/schemas/CurrencyDesign"
+            _links:
+              type: object
+              properties:
+                self:
+                  allOf:
+                    - $ref: "#/components/schemas/HALLink"
+                    - type: object
+                      properties:
+                        href:
+                          type: string
+                          default: /currency/MCC
+                          example: /currency/MCC
+                operations:
+                  allOf:
+                    - $ref: "#/components/schemas/HALLink"
+                    - type: object
+                      properties:
+                        href:
+                          type: string
+                          default: /block/operation/Bu9tSW5zdFwzeAgnCLUWV8ensutagkPB4qxJDr7K87WX
+                          example: /block/operation/Bu9tSW5zdFwzeAgnCLUWV8ensutagkPB4qxJDr7K87WX
+                block:
+                  allOf:
+                    - $ref: "#/components/schemas/HALLink"
+                    - type: object
+                      properties:
+                        href:
+                          type: string
+                          default: /block/0
+                          example: /block/0
+                currency:{currencyid}:
+                  allOf:
+                    - $ref: "#/components/schemas/HALLink"
+                    - type: object
+                      properties:
+                        href:
+                          type: string
+                          default: /currency/{currencyid:.*}
+                          example: /currency/{currencyid:.*}
+                        templated:
+                          type: boolean
+                          default: true
+                          example: true
 
     CurrencyID:
       description: currency unique id(or name)
@@ -5050,35 +5042,35 @@ components:
 
     AccountValue:
       allOf:
-        - $ref: '#/components/schemas/Account'
+        - $ref: "#/components/schemas/Account"
         - type: object
           required:
-          - balance
-          - height
-          - previous_height
+            - balance
+            - height
+            - previous_height
           properties:
             balance:
-              $ref: '#/components/schemas/Amount'
+              $ref: "#/components/schemas/Amount"
             height:
-              $ref: '#/components/schemas/Height'
+              $ref: "#/components/schemas/Height"
             previous_height:
-              $ref: '#/components/schemas/Height'
+              $ref: "#/components/schemas/Height"
 
     OperationValue:
       type: object
       required:
-      - _hint
-      - hash
-      - operation
-      - height
-      - confirmed_at
-      - reason
-      - in_state
-      - index
+        - _hint
+        - hash
+        - operation
+        - height
+        - confirmed_at
+        - reason
+        - in_state
+        - index
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               example: mitum-currency-operation-value-v0.0.1
               default: mitum-currency-operation-value-v0.0.1
@@ -5089,13 +5081,13 @@ components:
           example: 6GymxmuvhgUfAKWYQUKKveYh1H8b981vQaZcMsbWqykS
         operation:
           oneOf:
-            - $ref: '#/components/schemas/CreateAccountsSearch'
-            - $ref: '#/components/schemas/KeyUpdaterSearch'
-            - $ref: '#/components/schemas/TransfersSearch'
-            - $ref: '#/components/schemas/CurrencyRegisterSearch'
-            - $ref: '#/components/schemas/CurrencyPolicyUpdaterSearch'
+            - $ref: "#/components/schemas/CreateAccountsSearch"
+            - $ref: "#/components/schemas/KeyUpdaterSearch"
+            - $ref: "#/components/schemas/TransfersSearch"
+            - $ref: "#/components/schemas/CurrencyRegisterSearch"
+            - $ref: "#/components/schemas/CurrencyPolicyUpdaterSearch"
         height:
-          $ref: '#/components/schemas/Height'
+          $ref: "#/components/schemas/Height"
         confirmed_at:
           type: string
           format: date-time
@@ -5105,7 +5097,7 @@ components:
           type: boolean
           example: true
         reason:
-          $ref: '#/components/schemas/ReasonError'
+          $ref: "#/components/schemas/ReasonError"
           description: It describes the rejected reason of operation.
         index:
           type: integer
@@ -5115,37 +5107,37 @@ components:
     CurrencyDesign:
       type: object
       required:
-      - _hint
-      - amount
-      - genesis_account
-      - policy
+        - _hint
+        - amount
+        - genesis_account
+        - policy
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-design-v0.0.1
               example: mitum-currency-currency-design-v0.0.1
         amount:
-          $ref: '#/components/schemas/Amount'
+          $ref: "#/components/schemas/Amount"
         genesis_account:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: genesis account address, which will hold genesis balance
         policy:
-          $ref: '#/components/schemas/CurrencyPolicy'
+          $ref: "#/components/schemas/CurrencyPolicy"
 
     Amount:
       type: object
       required:
-      - _hint
-      - hash
-      - amount
-      - currency
+        - _hint
+        - hash
+        - amount
+        - currency
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-amount-v0.0.1
               example: mitum-currency-amount-v0.0.1
@@ -5155,19 +5147,19 @@ components:
           example: "100"
           default: "100"
         currency:
-          $ref: '#/components/schemas/CurrencyID'
+          $ref: "#/components/schemas/CurrencyID"
 
     CurrencyPolicy:
       description: currency policy
       type: object
       required:
-      - _hint
-      - new_account_min_balance
-      - feeer
+        - _hint
+        - new_account_min_balance
+        - feeer
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-currency-policy-v0.0.1
               example: mitum-currency-currency-policy-v0.0.1
@@ -5178,46 +5170,46 @@ components:
           description: fee policy
           type: object
           oneOf:
-            - $ref: '#/components/schemas/NilFeeer'
-            - $ref: '#/components/schemas/FixedFeeer'
-            - $ref: '#/components/schemas/RatioFeeer'
+            - $ref: "#/components/schemas/NilFeeer"
+            - $ref: "#/components/schemas/FixedFeeer"
+            - $ref: "#/components/schemas/RatioFeeer"
 
     NilFeeer:
       description: fee policy, which does not charge fee
       type: object
       required:
-      - _hint
+        - _hint
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-nil-feeer-v0.0.1
               example: mitum-currency-nil-feeer-v0.0.1
         type:
           type: string
-          example: 'nil'
-          default: 'nil'
+          example: "nil"
+          default: "nil"
 
     FixedFeeer:
       description: fee policy, which does charge fixed amount
       type: object
       required:
-      - _hint
+        - _hint
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-fixed-feeer-v0.0.1
               example: mitum-currency-fixed-feeer-v0.0.1
         type:
           type: string
-          example: 'fixed'
-          default: 'fixed'
+          example: "fixed"
+          default: "fixed"
         receiver:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: account address for receiving collected fee
         amount:
           type: string
@@ -5228,21 +5220,21 @@ components:
       description: fee policy, which does charge fee by transfer amount
       type: object
       required:
-      - _hint
+        - _hint
       properties:
         _hint:
           allOf:
-            - $ref: '#/components/schemas/Hint'
+            - $ref: "#/components/schemas/Hint"
             - type: string
               default: mitum-currency-ratio-feeer-v0.0.1
               example: mitum-currency-ratio-feeer-v0.0.1
         type:
           type: string
-          example: 'ratio'
-          default: 'ratio'
+          example: "ratio"
+          default: "ratio"
         receiver:
           allOf:
-            - $ref: '#/components/schemas/AccountAddress'
+            - $ref: "#/components/schemas/AccountAddress"
             - description: account address for receiving collected fee
         ratio:
           type: float
@@ -5260,12 +5252,12 @@ components:
     NodeAddress:
       description: node address
       type: string
-      example: 'n1:sa-v0.0.1'
+      example: "n1:sa-v0.0.1"
 
     AccountAddress:
       description: account address
       type: string
-      example: 'mc-node:mca-v0.0.1'
+      example: "mc-node:mca-v0.0.1"
 
     ReasonError:
       type: object
@@ -5275,9 +5267,8 @@ components:
         msg:
           description: reason message
           type: string
-          example: 'insufficient balance'
+          example: "insufficient balance"
         data:
           description: additional data
           type: object
-
 # vi: ft=yaml tw=100 ts=2 sw=2 expandtab smarttab
