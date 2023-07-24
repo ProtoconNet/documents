@@ -1,0 +1,21 @@
+operationId: node_info
+
+summary: Mitum provider's information
+
+description: The information about the mitum node that is currently providing the service.
+
+tags:
+  - Node Info
+
+responses:
+  "200":
+    $ref: "./200_ok.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/curl.yaml"

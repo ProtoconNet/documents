@@ -1,0 +1,35 @@
+type: object
+
+properties:
+  proposed_at:
+    type: string
+    format: date-time
+  states_tree:
+    type:
+      - string
+      - null
+  hash:
+    type: string
+  previous:
+    type: string
+  proposal:
+    type: string
+  operations_tree:
+    type:
+      - string
+      - null
+  suffrage:
+    type: string
+  _hint:
+    type: string
+  height:
+    type: integer
+
+required:
+  - proposed_at
+  - hash
+  - previous
+  - proposal
+  - suffrage
+  - _hint
+  - height

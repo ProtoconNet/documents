@@ -1,0 +1,30 @@
+type: object
+
+properties:
+  state:
+    type: string
+  suffrage:
+    type: object
+    properties:
+      nodes:
+        type: array
+        items:
+          type: object
+          properties:
+            address:
+              type: string
+            publickey:
+              type: string
+            _hint:
+              type: string
+              default: "suffrage-node-state-value-v0.0.1"
+            start:
+              type: integer
+      height:
+        type: integer
+    required:
+      - nodes
+      - height
+required:
+  - state
+  - suffrage

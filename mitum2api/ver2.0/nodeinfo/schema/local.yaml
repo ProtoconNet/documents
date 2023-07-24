@@ -1,0 +1,46 @@
+type: object
+
+properties:
+  address:
+    type: string
+  publickey:
+    type: string
+  parameters:
+    type: object
+    properties:
+      _hint:
+        type: string
+        default: "isaac-params-v0.0.1"
+      threshold:
+        type: string
+      interval_broadcast_ballot:
+        type: string
+      wait_preparing_init_ballot:
+        type: string
+      ballot_stuck_wait:
+        type: string
+      ballot_stuck_resolve_after:
+        type: string
+      max_try_handover_y_broker_sync_data:
+        type: integer
+    required:
+      - threshold
+      - interval_broadcast_ballot
+      - wait_preparing_init_ballot
+      - ballot_stuck_wait
+      - ballot_stuck_resolve_after
+      - max_try_handover_y_broker_sync_data
+  conn_info:
+    type: string
+  uptime:
+    type: string
+  version:
+    type: string
+
+required:
+  - address
+  - publickey
+  - parameters
+  - conn_info
+  - uptime
+  - version

@@ -1,0 +1,15 @@
+X-Rate-Limit:
+  description: calls per hour allowed by the user
+  schema:
+    type: integer
+    format: int32
+X-Rate-Remaining:
+  description: remains request count
+  schema:
+    type: integer
+    format: int32
+X-Rate-Reset:
+  description: timestamp to reset limit
+  schema:
+    type: integer
+    format: int64

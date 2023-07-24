@@ -1,0 +1,12 @@
+description: Unexpected error
+
+headers:
+  $ref: "./header.yaml"
+
+content:
+  application/json:
+    schema:
+      $ref: "./error.yaml"
+    example:
+      id: example_error
+      message: some error message

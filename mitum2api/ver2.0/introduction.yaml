@@ -1,0 +1,130 @@
+introduction: |
+  # Introduction
+
+  The digest API description of Mitum blockchain protocol.
+
+  The Mitum Digest API allows you to use traditional HTTP requests to access mitum nodes,
+  retrieve status information, and create/send operations that change their status.
+
+  For interacting with the Mitum Protocol, the Mitum Digest API allows you to script
+  complex operations as required by your situation.
+
+  The API documentation will start with a general overview about the design
+  and technology that has been implemented, followed by reference information
+  about specific endpoints.
+
+  ## Requests
+
+  Any tool that is fluent in HTTP can communicate with the API simply by
+  requesting the correct URI. Requests should be made using the HTTPS protocol
+  so that traffic is encrypted. The interface responds to different methods
+  depending on the action required.
+
+  |Method|Usage|
+  |--- |--- |
+  |GET|For simple retrieval of information about your account, Droplets, or environment, you should use the GET method.  The information you request will be returned to you as a JSON object. The attributes defined by the JSON object can be used to form additional requests.  Any request using the GET method is read-only and will not affect any of the objects you are querying.|
+  |POST|To create a new object, your request should specify the POST method. The POST request includes all of the attributes necessary to create a new object.  When you wish to create a new object, send a POST request to the target endpoint.|
+
+  ## HTTP Statuses
+
+  Along with the HTTP methods that the API responds to, it will also return
+  standard HTTP statuses, including error codes.
+
+  In the event of a problem, the status will contain the error code, while the
+  body of the response will usually contain additional information about the
+  problem that was encountered.
+
+  In general, if the status returned is in the 200 range, it indicates that
+  the request was fulfilled successfully and that no error was encountered.
+
+  Return codes in the 400 range typically indicate that there was an issue
+  with the request that was sent. For example, it might mean that you didn't
+  enter a parameter correctly, failed to validate a signature, requested
+  an unauthorized action, the object you're requesting doesn't exist,
+  or the request is invalid.
+
+  If you receive a status in the 500 range, this generally indicates a node-side
+  problem. This means that provider are having an issue on our end and cannot
+  fulfill your request currently.
+
+  400 and 500 level error responses will include a JSON object in their body,
+  including the message attributes.
+
+  ### Example Error Response
+
+  ```
+      400 Bad Request
+      {
+        "message":  "handle new operation; fail to preprocess CreateAccountsItem: keys of target already exists"
+      }
+  ```
+
+  ## Responses
+
+  When a request is successful, a response body will typically be sent back in
+  the form of a JSON object.
+
+  Inside this JSON object, the hint message of the resource that was the target
+  of the request is set. In addition, the _embedded field contains specific information.
+
+  For example, a GET request to `/account/$ACCOUNT_ADDRESS` returns an object
+  with the hint message "mitum-currency-account-value".
+
+  ### Response for a Single Object
+
+  ```
+      {
+      "_hint": "mitum-currency-hal-v0.0.1",
+      "_embedded": {
+        "_hint": "mitum-currency-account-value-v0.0.1",
+        "hash": "7f5yLXDPJoFuVwRvF2Dw2iCDrKA9xVmMHuqxrgY3hpKb",
+        "address": "d7f09d4f066733589da01e06c953ca45af7d6a9feca",
+        "keys": {
+          "_hint": "mitum-currency-contract-account-keys-v0.0.1",
+          "hash": "BGtXqEudPbNqxRWrWvNmrrtPtBcBZMdEjkFwcVgrdFUr",
+          "keys": [],
+          "threshold": 100
+        },
+        "balance": [
+          {
+            "amount": "100",
+            "currency": "PEN",
+            "_hint": "mitum-currency-amount-v0.0.1"
+          }
+        ],
+        "height": 50194
+      },
+      ...
+  ```
+
+  ## Links
+
+  The `_links` object is returned as part of the response body.
+  The `_links` object provides a way to get additional information.
+  The `_links` object can contain various fields as requested.
+
+  ### Sample Links Object
+
+  ```
+    {
+      "_links": {
+        "operations": {
+          "href": "/account/d7f09d4f066733589da01e06c953ca45af7d6a9feca/operations"
+        },
+        "operations:{offset}": {
+          "templated": true,
+          "href": "/account/d7f09d4f066733589da01e06c953ca45af7d6a9feca/operations?offset={offset}"
+        },
+        "operations:{offset,reverse}": {
+          "templated": true,
+          "href": "/account/d7f09d4f066733589da01e06c953ca45af7d6a9feca/operations?offset={offset}&reverse=1"
+        },
+        "block": {
+          "href": "/block/50194"
+        },
+        "self": {
+          "href": "/account/d7f09d4f066733589da01e06c953ca45af7d6a9feca"
+        }
+      }
+    }
+  ```

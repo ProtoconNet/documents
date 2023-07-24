@@ -1,0 +1,32 @@
+type: object
+
+properties:
+  suffrage_candidate_limiter:
+    type: object
+    properties:
+      _hint:
+        type: string
+        default: "currency-fixed-suffrage-candidate-limiter-rule-v0.0.1"
+      limit:
+        type: integer
+    required:
+      - limit
+  _hint:
+    type: string
+    default: "currency-network-policy-v0.0.1"
+  max_operations_in_proposal:
+    type: integer
+  suffrage_candidate_lifespan:
+    type: integer
+  max_suffrage_size:
+    type: integer
+  suffrage_withdraw_lifespan:
+    type: integer
+
+required:
+  - suffrage_candidate_limiter
+  - _hint
+  - max_operations_in_proposal
+  - suffrage_candidate_lifespan
+  - max_suffrage_size
+  - suffrage_withdraw_lifespan
