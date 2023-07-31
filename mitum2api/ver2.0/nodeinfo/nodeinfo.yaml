@@ -1,6 +1,6 @@
 operationId: node_info
 
-summary: Mitum provider's information
+summary: Node information
 
 description: The information about the mitum node that is currently providing the service.
 
