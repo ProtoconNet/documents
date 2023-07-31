@@ -76,7 +76,7 @@ paths:
   
   /block/{height}/operations:
     get:
-      $ref: "./block/operations_by_block.yaml"
+      $ref: "./block/all_operations_of_block.yaml"
 
   /block/operations:
     get:

@@ -1,4 +1,4 @@
-operationId: block_by_hash
+operationId: all_manifests
 
 summary: 6. All the manifests
 
