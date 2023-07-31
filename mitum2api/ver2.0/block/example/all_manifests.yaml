@@ -1,0 +1,4 @@
+lang: cURL
+source: |-
+  curl -X GET "https://test.protocon.network/block/manifests?offset=3&reverse=false" \
+       -H "accept: application/hal+json"

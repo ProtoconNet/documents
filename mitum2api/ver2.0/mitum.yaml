@@ -69,4 +69,16 @@ paths:
   /block/operation/{operation_fact_hash}:
     get:
       $ref: "./block/block_operation_by_hash"
+
+  /block/manifests:
+    get:
+      $ref: "./block/all_manifests.yaml"
+  
+  /block/{height}/operations:
+    get:
+      $ref: "./block/operations_by_block.yaml"
+
+  /block/operations:
+    get:
+      $ref: "./block/all_operation.yaml"
   

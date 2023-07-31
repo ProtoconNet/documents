@@ -1,0 +1,18 @@
+type: "object"
+
+properties:
+  reverse:
+    type: "object"
+    properties:
+      href:
+        type: "string"
+  self:
+    type: "object"
+    properties:
+      href:
+        type: "string"
+  next:
+    type: "object"
+    properties:
+      href:
+        type: "string"

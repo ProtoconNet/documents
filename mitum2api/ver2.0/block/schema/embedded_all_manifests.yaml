@@ -1,0 +1,13 @@
+type: object
+
+properties:
+  _hint:
+    title: _hint
+    type: string
+    default: "mitum-currency-hal-v0.0.1"
+
+  _embedded:
+    $ref: "./embedded_block_manifest.yaml"
+
+  _links:
+    $ref: "./link_block_manifest.yaml"

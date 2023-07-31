@@ -1,0 +1,38 @@
+operationId: block_by_hash
+
+summary: 6. All the manifests
+
+description: Get information of the all manifests.
+
+tags:
+  - Block
+
+parameters:
+  - name: offset
+    in: query
+    schema:
+      type: string
+      example: "2"
+    description: >-
+      Manifests after offset, usually it is block height.
+  - name: reverse
+    in: query
+    schema:
+      type: boolean
+      example: false
+      default: false
+    description: >-
+      Manifests by reverse order.
+
+responses:
+  "200":
+    $ref: "./response/200_all_manifests.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/all_manifests.yaml"
