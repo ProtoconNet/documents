@@ -1,4 +1,4 @@
-description: Server error.
+description: Server error
 
 headers:
   $ref: "./header.yaml"

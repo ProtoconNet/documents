@@ -1,0 +1,21 @@
+operationId: block_manifest_by_height
+
+summary: 3. Block manifest by height
+
+description: Block manifest information by block-height.
+
+tags:
+  - Block
+
+responses:
+  "200":
+    $ref: "./response/200_block_manifest_by_height.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/block_manifest_by_height.yaml"

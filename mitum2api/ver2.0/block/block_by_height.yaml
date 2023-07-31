@@ -1,4 +1,4 @@
-operationId: blockinfo_by_height
+operationId: block_by_height
 
 summary: 1. Block information by height
 
@@ -18,4 +18,4 @@ responses:
     $ref: "../common/unexpected_error.yaml"
 
 x-codeSamples:
-  - $ref: "./example/curl.yaml"
+  - $ref: "./example/block_by_height.yaml"

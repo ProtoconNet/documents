@@ -1,4 +1,4 @@
-operationId: blockinfo_by_hash
+operationId: block_by_hash
 
 summary: 2. Block information by hash
 
@@ -18,4 +18,4 @@ responses:
     $ref: "../common/unexpected_error.yaml"
 
 x-codeSamples:
-  - $ref: "./example/curl.yaml"
+  - $ref: "./example/block_by_hash.yaml"

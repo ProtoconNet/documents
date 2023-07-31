@@ -1,0 +1,33 @@
+type: object
+
+properties:
+  Manifest:
+    type: object
+    properties:
+      proposed_at:
+        type: string
+        format: date-time
+        example: "2023-07-19T07:12:33.542Z"
+      states_tree:
+        type: string
+      hash:
+        type: string
+        example: "LBqy47Y4KaZ1NaoCajoejRYUB5VCFQ5vCd7unVHCbpc"
+      previous:
+        type: string
+        example: "CwMB1Mi6YLhFZWPZ2dzWbyH22BgkHY7n9nATfnCws9iY"
+      proposal:
+        type: string
+        example: "CYZmjXJaLFJKDD1GR2KdZ8KuhPSRGaYK2sZboRb3GFey"
+      operations_tree:
+        type: string
+      suffrage:
+        type: string
+        example: "E2rk7KVFU76YGTddXG3g7rAuWZ89zDMdjMy5UghRsTK9"
+      _hint:
+        type: string
+        example: "digest-manifest-v0.0.1"
+      height:
+        type: integer
+        format: int64
+        example: 50

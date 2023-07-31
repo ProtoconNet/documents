@@ -1,0 +1,62 @@
+type: object
+
+properties:
+  block:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/50"
+
+  block:{height}:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/{height:[0-9]+}"
+      templated:
+        type: boolean
+        default: true
+
+  block:{hash}:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/{height:[0-9]+}"
+      templated:
+        type: boolean
+        default: true
+
+  manifest:{height}:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/{height:[0-9]+}/manifest"
+      templated:
+        type: boolean
+        default: true
+  manifest:{hash}:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/{hash:(?i)[0-9a-z][0-9a-z]+}/manifest"
+      templated:
+        type: boolean
+        default: true
+
+  self:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/50/manifest"
+
+  next:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/51/manifest"

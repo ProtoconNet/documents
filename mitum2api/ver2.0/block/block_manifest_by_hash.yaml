@@ -1,0 +1,21 @@
+operationId: block_manifest_by_hash
+
+summary: 4. Block manifest by hash
+
+description: Block manifest information by block-hash.
+
+tags:
+  - Block
+
+responses:
+  "200":
+    $ref: "./response/200_block_manifest_by_hash.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/block_manifest_by_hash.yaml"

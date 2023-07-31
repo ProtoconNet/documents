@@ -62,6 +62,10 @@ paths:
     get:
       $ref: "./block/block_by_hash.yaml"
 
+  /block/{height}/manifest:
+    get:
+      $ref: "./block/block_manifest_by_height.yaml"
+  
   
 
 
