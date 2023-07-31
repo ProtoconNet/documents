@@ -56,9 +56,13 @@ paths:
 
   /block/{height}:
     get:
-      $ref: 
+      $ref: "./block/block_by_height.yaml"
 
-      
+  /block/{block_hash}:
+    get:
+      $ref: "./block/block_by_hash.yaml"
+
+
       tags:
         - block
       summary: 1. Block by block height

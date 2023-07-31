@@ -1,0 +1,4 @@
+lang: cURL
+source: |-
+  curl -X GET "https://test.protocon.network/block/50" \
+       -H "accept: application/hal+json"

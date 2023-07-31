@@ -1,0 +1,21 @@
+operationId: blockinfo_by_hash
+
+summary: 2. Block information by hash
+
+description: block by hash. The basic structure of it is same with /block/{height}.
+
+tags:
+  - Block
+
+responses:
+  "200":
+    $ref: "./response/200_block_by_hash.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/curl.yaml"
