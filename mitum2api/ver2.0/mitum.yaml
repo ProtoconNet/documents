@@ -54,26 +54,11 @@ paths:
     get:
       $ref: "./nodeinfo/nodeinfo.yaml"
 
-
-
-
-    get:
-      tags:
-        - node-info
-      summary: Node information
-      operationId: node-info
-      responses:
-        500:
-          description: problems in processing.
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/Problem"
-        200:
-          
-
   /block/{height}:
     get:
+      $ref: 
+
+      
       tags:
         - block
       summary: 1. Block by block height
