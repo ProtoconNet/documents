@@ -9,7 +9,7 @@ tags:
 
 responses:
   "200":
-    $ref: "./200_ok.yaml"
+    $ref: "./response/200_nodeinfo.yaml"
 
   "500":
     $ref: "../common/500_server_error.yaml"

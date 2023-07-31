@@ -1,0 +1,21 @@
+operationId: blockinfo_by_height
+
+summary: 1. Block information by height
+
+description: Basically the hal document of response does include the links for components of block like manifest.
+
+tags:
+  - Block
+
+responses:
+  "200":
+    $ref: "./200_ok.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/curl.yaml"
