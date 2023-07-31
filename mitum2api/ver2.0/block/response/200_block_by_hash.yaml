@@ -13,4 +13,4 @@ content:
           default: "mitum-currency-hal-v0.0.1"
 
         _links:
-          type: object
+          $ref: "../schema/link_block_by_hash.yaml"

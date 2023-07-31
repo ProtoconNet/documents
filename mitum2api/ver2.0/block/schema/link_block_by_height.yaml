@@ -1,4 +1,3 @@
-// example
 type: object
 
 properties:
@@ -7,38 +6,35 @@ properties:
     properties:
       href:
         type: string
-        default: "/block/3"
-      templated:
-        type: boolean
-        default: false
-
-  prev:
-    type: object
-    properties:
-      href:
-        type: string
-        default: "/block/2"
+        default: "/block/50"
 
   next:
     type: object
     properties:
       href:
         type: string
-        default: "/block/4"
+        default: "/block/51"
+
+  prev:
+    type: object
+    properties:
+      href:
+        type: string
+        default: "/block/49"
 
   current:
     type: object
     properties:
       href:
         type: string
-        default: "/block/3"
+        default: "/block/50"
 
   current-manifest:
     type: object
     properties:
       href:
         type: string
-        default: "/block/3/manifest"
+        default: "/block/50/manifest"
 
   block:{height}:
     type: object
@@ -59,12 +55,13 @@ properties:
       templated:
         type: boolean
         default: true
+
   block:{hash}:
     type: object
     properties:
       href:
         type: string
-        default: "/block/{hash:(?i)[0-9a-z][0-9a-z]+}"
+        default: "/block/{height:[0-9]+}"
       templated:
         type: boolean
         default: true
