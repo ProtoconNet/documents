@@ -1,0 +1,47 @@
+operationId: all_operations_of_block
+
+summary: 7. All the operations of block
+
+description: Get information of the all operations in the specify block.
+
+tags:
+  - Block
+
+parameters:
+  - name: height
+    in: path
+    description: Block height.
+    required: true
+    schema:
+      description: >-
+        Height of block.
+      type: integer
+      format: int64
+  - name: offset
+    in: query
+    schema:
+      type: string
+      example: "2,0"
+    description: >-
+      Operations after offset.
+  - name: reverse
+    in: query
+    schema:
+      type: boolean
+      example: false
+      default: false
+    description: >-
+      Operations by reverse order.
+
+responses:
+  "200":
+    $ref: "./response/200_all_operations_of_block.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/all_operations_of_block.yaml"

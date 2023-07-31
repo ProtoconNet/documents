@@ -1,0 +1,5 @@
+type: "object"
+
+properties:
+  total_operations:
+    type: "integer"

@@ -1,4 +1,4 @@
-description: Block information
+description: Manifests information
 
 headers:
   $ref: "../../common/header.yaml"

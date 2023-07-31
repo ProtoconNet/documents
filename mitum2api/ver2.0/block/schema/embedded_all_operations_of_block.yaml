@@ -1,0 +1,14 @@
+type: "object"
+
+properties:
+  _hint:
+    type: "string"
+  _embedded:
+    type: "object"
+    properties:
+      _hint:
+        type: "string"
+      hash:
+        type: "string"
+  _links:
+    $ref: "./link_all_operations.yaml"
