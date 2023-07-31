@@ -18,4 +18,4 @@ content:
             $ref: "../schema/embedded.yaml"
 
         _links:
-          type: object
+          $ref: "../schema/link.yaml"
