@@ -80,5 +80,5 @@ paths:
 
   /block/operations:
     get:
-      $ref: "./block/all_operation.yaml"
+      $ref: "./block/all_operations.yaml"
   
