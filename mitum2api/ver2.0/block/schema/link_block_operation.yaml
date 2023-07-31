@@ -1,0 +1,33 @@
+type: object
+
+properties:
+  block:
+    type: object
+    properties:
+      href:
+        type: string
+        example: "/block/473"
+  operation:{hash}:
+    type: object
+    properties:
+      templated:
+        type: boolean
+        example: true
+      href:
+        type: string
+        example: "/block/operation/{hash:(?i)[0-9a-z][0-9a-z]+}"
+  block:{height}:
+    type: object
+    properties:
+      templated:
+        type: boolean
+        example: true
+      href:
+        type: string
+        example: "/block/{height:[0-9]+}"
+  self:
+    type: object
+    properties:
+      href:
+        type: string
+        example: "/block/operation/2PZJof9o8RsaCWYc7L3KeqXyszwWTkJvRmNxGQZYbfUW"

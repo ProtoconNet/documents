@@ -1,0 +1,56 @@
+type: object
+
+properties:
+  _hint:
+    type: string
+    example: "mitum-currency-operation-value-v0.0.1"
+  hash:
+    type: string
+    example: "2PZJof9o8RsaCWYc7L3KeqXyszwWTkJvRmNxGQZYbfUW"
+  operation:
+    type: object
+    properties:
+      hash:
+        type: string
+        example: "GXdxi3XJ1gmjUU91PftXAe5Qsdd8qGCHkHDttCLPmJPW"
+      fact:
+        type: object
+        properties:
+          hash:
+            type: string
+            example: "2PZJof9o8RsaCWYc7L3KeqXyszwWTkJvRmNxGQZYbfUW"
+          token:
+            type: string
+            example: "MjAyMy0wNy0xNyAwODozMjoxNy4wNzMgKzAwMDAgVVRD"
+          _hint:
+            type: string
+            example: "mitum-currency-create-contract-accounts-operation-fact-v0.0.1"
+          sender:
+            type: string
+            example: "5zPANS8TqGwvVh1bghiFQpX2v4GqPsW2Rx1xtonNPMsSmca"
+          items:
+            type: array
+            items:
+              $ref: "./embedded_block_operation_item.yaml"
+      signs:
+        type: "null"
+      _hint:
+        type: string
+        example: "mitum-currency-create-contract-accounts-operation-v0.0.1"
+  height:
+    type: integer
+    format: int64
+    example: 473
+  confirmed_at:
+    type: string
+    format: date-time
+    example: "2023-07-17T08:32:22.014Z"
+  reason:
+    type: "null"
+  in_state:
+    type: boolean
+    example: true
+  index:
+    type: integer
+    format: int64
+    example: 0

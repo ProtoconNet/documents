@@ -1,0 +1,21 @@
+operationId: block_operation_by_hash
+
+summary: 5. Operation by fact hash
+
+description: Operation information by 'fact' hash (Not operation hash)
+
+tags:
+  - Block
+
+responses:
+  "200":
+    $ref: "./response/200_block_operation_by_hash.yaml"
+
+  "500":
+    $ref: "../common/500_server_error.yaml"
+
+  default:
+    $ref: "../common/unexpected_error.yaml"
+
+x-codeSamples:
+  - $ref: "./example/block_operation_by_hash.yaml"

@@ -1,0 +1,51 @@
+type: object
+
+properties:
+  _hint:
+    type: string
+    example: "mitum-currency-create-contract-accounts-multiple-amounts-v0.0.1"
+  keys:
+    type: object
+    properties:
+      _hint:
+        type: string
+        example: "mitum-currency-keys-v0.0.1"
+      hash:
+        type: string
+        example: "2VKEH78tLMJ71KXzYQUFej5LmwprqiRSC44E2ax2tn8B"
+      keys:
+        type: array
+        items:
+          type: object
+          properties:
+            _hint:
+              type: string
+              example: "mitum-currency-key-v0.0.1"
+            weight:
+              type: integer
+              format: int64
+              example: 100
+            key:
+              type: string
+              example: "diLUcZugeDFW6ftQdcjdz8Ks1KBGiACo9GAcKQUgwFdfmpu"
+      threshold:
+        type: integer
+        format: int64
+        example: 100
+  amounts:
+    type: array
+    items:
+      type: object
+      properties:
+        amount:
+          type: string
+          example: "100"
+        currency:
+          type: string
+          example: "PEN"
+        _hint:
+          type: string
+          example: "mitum-currency-amount-v0.0.1"
+  addrtype:
+    type: string
+    example: "mca"
