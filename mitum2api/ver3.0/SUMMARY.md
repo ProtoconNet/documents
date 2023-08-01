@@ -19,3 +19,4 @@
     * [Secret Token](apis/contract/secret-token.md)
     * [KYC](apis/contract/kyc.md)
     * [Timestamp](apis/contract/timestamp.md)
+* [(Methods description)](methods-description.md)
