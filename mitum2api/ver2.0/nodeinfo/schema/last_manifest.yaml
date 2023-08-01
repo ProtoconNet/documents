@@ -5,9 +5,7 @@ properties:
     type: string
     format: date-time
   states_tree:
-    type:
-      - string
-      - null
+    type: string
   hash:
     type: string
   previous:
@@ -15,9 +13,7 @@ properties:
   proposal:
     type: string
   operations_tree:
-    type:
-      - string
-      - null
+    type: string
   suffrage:
     type: string
   _hint:

@@ -11,4 +11,4 @@ properties:
       hash:
         type: "string"
   _links:
-    $ref: "./link_all_operations.yaml"
+    $ref: "./link_all_operations_of_block.yaml"

@@ -14,10 +14,10 @@ content:
         _embedded:
           type: "array"
           items:
-            $ref: "./schema/embedded_all_operations.yaml"
+            $ref: "../schema/embedded_all_operations_of_block.yaml"
 
         _links:
-          $ref: "./schema/link_all_operations.yaml"
+          $ref: "../schema/link_all_operations_of_block.yaml"
 
         _extra:
-          $ref: "./schema/extra_all_operations.yaml"
+          $ref: "../schema/extra_all_operations_of_block.yaml"

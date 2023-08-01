@@ -33,7 +33,9 @@ properties:
             items:
               $ref: "./embedded_block_operation_item.yaml"
       signs:
-        type: "null"
+        nullable: true
+        anyOf:
+          - type: string
       _hint:
         type: string
         example: "mitum-currency-create-contract-accounts-operation-v0.0.1"
@@ -46,7 +48,9 @@ properties:
     format: date-time
     example: "2023-07-17T08:32:22.014Z"
   reason:
-    type: "null"
+    nullable: true
+    anyOf:
+      - type: string
   in_state:
     type: boolean
     example: true

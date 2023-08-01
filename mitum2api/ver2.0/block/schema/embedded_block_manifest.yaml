@@ -10,6 +10,8 @@ properties:
         example: "2023-07-19T07:12:33.542Z"
       states_tree:
         type: string
+        default: string
+        example: ""
       hash:
         type: string
         example: "LBqy47Y4KaZ1NaoCajoejRYUB5VCFQ5vCd7unVHCbpc"
@@ -21,6 +23,8 @@ properties:
         example: "CYZmjXJaLFJKDD1GR2KdZ8KuhPSRGaYK2sZboRb3GFey"
       operations_tree:
         type: string
+        default: ""
+        example: ""
       suffrage:
         type: string
         example: "E2rk7KVFU76YGTddXG3g7rAuWZ89zDMdjMy5UghRsTK9"
@@ -31,3 +35,8 @@ properties:
         type: integer
         format: int64
         example: 50
+
+  operation:
+    type: integer
+    format: int64
+    example: 0

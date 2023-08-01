@@ -2,22 +2,20 @@ openapi: 3.0.0
 
 info:
   title: Mitum API
-  version: '0.0.1'
+  version: "0.0.1"
   description:
-    $ref: 'introduction.yaml#/introduction'
+    $ref: "introduction.yaml#/introduction"
 
   contact:
     name: SocialInfraTech Support
     email: dev@socialinfratech.com
-    url: *****
+    url: https://www.socialinfratech.com
   license:
-    name: *****
-    url: *****
-  termsOfService: *****
+    name: GPL
+    url: https://www.example.com
+  termsOfService: https://www.socialinfratech.com
 
 servers:
-  - url: *****
-    description: Production
   - url: https://testnet.protocon.io
     description: Sandbox
 
@@ -65,15 +63,15 @@ paths:
   /block/{height}/manifest:
     get:
       $ref: "./block/block_manifest_by_height.yaml"
-  
+
   /block/operation/{operation_fact_hash}:
     get:
-      $ref: "./block/block_operation_by_hash"
+      $ref: "./block/block_operation_by_hash.yaml"
 
   /block/manifests:
     get:
       $ref: "./block/all_manifests.yaml"
-  
+
   /block/{height}/operations:
     get:
       $ref: "./block/all_operations_of_block.yaml"
@@ -81,4 +79,3 @@ paths:
   /block/operations:
     get:
       $ref: "./block/all_operations.yaml"
-  
