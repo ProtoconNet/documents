@@ -1,8 +1,19 @@
 ---
 description: /
+layout:
+  title:
+    visible: true
+  description:
+    visible: true
+  tableOfContents:
+    visible: false
+  outline:
+    visible: true
+  pagination:
+    visible: true
 ---
 
-# Get node information
+# Template
 
 {% swagger method="get" path="" baseUrl="" summary="Get suffrage-node information of the currently connected Mitum-network." expanded="false" fullWidth="false" %}
 {% swagger-description %}
@@ -20,7 +31,13 @@ description: /
 
 
 
-#### Response examples
+#### Response Headers
+
+<table><thead><tr><th width="226">Key</th><th>Value</th></tr></thead><tbody><tr><td>Content-Type</td><td>application/hal+json; charset=utf-8</td></tr><tr><td>Request-Id</td><td>(ex) cj4apiih16elnoamgpng</td></tr><tr><td>X-Mitum-Encoder-Hint</td><td>son-encoder-v2.0.0</td></tr><tr><td>Date</td><td>(ex) Tue, 01 Aug 2023 06:57:14 GMT</td></tr><tr><td>Content-Length</td><td>(ex) 1417</td></tr></tbody></table>
+
+
+
+#### Response Examples
 
 {% tabs %}
 {% tab title="200" %}
@@ -94,8 +111,26 @@ description: /
 ```
 {% endtab %}
 
-{% tab title="500" %}
+{% tab title="400" %}
+```
+"Not Found"
+```
+{% endtab %}
+
+{% tab title="403" %}
 ```json
+"code 403 is not supported"
+```
+{% endtab %}
+
+{% tab title="404" %}
+```json
+"code 404 is not supported"
+```
+{% endtab %}
+
+{% tab title="500" %}
+```
 "Internal Server Error"
 ```
 {% endtab %}
