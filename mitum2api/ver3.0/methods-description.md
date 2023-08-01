@@ -1,17 +1,5 @@
 # (Methods description)
 
-#### Request
-
-
-
-<details>
-
-<summary></summary>
-
-
-
-</details>
-
 {% swagger method="get" path="" baseUrl="" summary="" %}
 {% swagger-description %}
 
@@ -22,18 +10,21 @@
 {% endswagger-response %}
 {% endswagger %}
 
-#### Response
 
 
+#### Response examples
 
 {% tabs %}
 {% tab title="200" %}
-```
+```json
 // Some code
 ```
 {% endtab %}
 
 {% tab title="500" %}
-
+```json
+// Some code
+```
 {% endtab %}
 {% endtabs %}
+
