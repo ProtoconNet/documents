@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "swagger-cli validate ./mitum.yaml"
   },
   "author": "",
   "license": "ISC"
