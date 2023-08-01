@@ -16,7 +16,7 @@ info:
   termsOfService: https://www.socialinfratech.com
 
 servers:
-  - url: https://testnet.protocon.io
+  - url: http://15.165.34.166:54320
     description: Sandbox
 
 tags:
