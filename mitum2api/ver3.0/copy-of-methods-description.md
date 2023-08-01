@@ -1,11 +1,23 @@
-# Get node information
+# Copy of (Methods description)
 
-{% swagger method="get" path="" baseUrl="" summary="/" expanded="true" fullWidth="false" %}
+{% swagger method="get" path="" baseUrl="" summary="https://<provider's base-url>/" expanded="true" fullWidth="false" %}
 {% swagger-description %}
-Get suffrage-node information of the currently connected Mitum-network.
+node information of mitum-currency node
 {% endswagger-description %}
 
 {% swagger-response status="200: OK" description="" %}
+
+{% endswagger-response %}
+
+{% swagger-response status="400: Bad Request" description="" %}
+
+{% endswagger-response %}
+
+{% swagger-response status="403: Forbidden" description="" %}
+
+{% endswagger-response %}
+
+{% swagger-response status="404: Not Found" description="" %}
 
 {% endswagger-response %}
 
@@ -90,9 +102,26 @@ Get suffrage-node information of the currently connected Mitum-network.
 ```
 {% endtab %}
 
+{% tab title="400" %}
+```json
+Bad request
+```
+{% endtab %}
+
+{% tab title="403" %}
+```json
+```
+{% endtab %}
+
+{% tab title="404" %}
+```json
+// Some code
+```
+{% endtab %}
+
 {% tab title="500" %}
 ```json
-"Internal Server Error"
+// Some code
 ```
 {% endtab %}
 {% endtabs %}
