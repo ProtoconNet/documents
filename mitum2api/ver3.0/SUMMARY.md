@@ -7,7 +7,7 @@
   * [Links](mitum2api/links.md)
 * [APIs](apis/README.md)
   * [Node Information](apis/node-information/README.md)
-    * [Page 1](apis/node-information/page-1.md)
+    * [Get node information](apis/node-information/get-node-information.md)
   * [Block](apis/block.md)
   * [Account](apis/account.md)
   * [Builder](apis/builder.md)
