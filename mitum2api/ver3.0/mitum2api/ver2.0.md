@@ -1,12 +1,10 @@
-```
-npm test
-```
+# Requests
 
-Expected result:
+Any tool that is fluent in HTTP can communicate with the API simply by requesting the correct URI.
 
-```
-> ver2.0@1.0.0 test
-> swagger-cli validate ./mitum.yaml
+Requests should be made using the HTTPS protocol so that traffic is encrypted.
 
-./mitum.yaml is valid
-```
+The interface responds to different methods depending on the action required.
+
+
+
