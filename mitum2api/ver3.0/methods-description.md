@@ -1,8 +1,12 @@
+---
+description: /
+---
+
 # Get node information
 
-{% swagger method="get" path="" baseUrl="" summary="/" expanded="true" fullWidth="false" %}
+{% swagger method="get" path="" baseUrl="" summary="Get suffrage-node information of the currently connected Mitum-network." expanded="false" fullWidth="false" %}
 {% swagger-description %}
-Get suffrage-node information of the currently connected Mitum-network.
+
 {% endswagger-description %}
 
 {% swagger-response status="200: OK" description="" %}
