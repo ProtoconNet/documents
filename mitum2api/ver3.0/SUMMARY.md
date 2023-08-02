@@ -26,7 +26,7 @@
     * [2. Fact template to build operations](apis/builder/2.-fact-template-to-build-operations.md)
     * [3. Build operation messages by fact](apis/builder/3.-build-operation-messages-by-fact.md)
     * [4. Sign operation messages](apis/builder/4.-sign-operation-messages.md)
-    * [5. Broadcast operation and seal messages to network](apis/builder/5.-broadcast-operation-and-seal-messages-to-network.md)
+    * [5. Broadcast operation](apis/builder/5.-broadcast-operation.md)
   * [Currency](apis/currency/README.md)
     * [1. Currencies information](apis/currency/1.-currencies-information.md)
     * [2. Currency information](apis/currency/2.-currency-information.md)
