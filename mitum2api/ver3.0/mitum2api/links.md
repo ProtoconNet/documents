@@ -6,7 +6,7 @@ The `_links` object:
 2. provides a way to get additional information.
 3. can contain various fields as requested.
 
-####
+
 
 #### Sample Links Object
 
