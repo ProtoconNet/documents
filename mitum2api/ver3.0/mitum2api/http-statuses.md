@@ -1,18 +1,25 @@
 # HTTP Statuses
 
-Along with the HTTP methods that the API responds to, it will also return standard HTTP statuses, including error codes.
+When making requests to the API, you will receive responses that include standard HTTP statuses, including error codes.
 
-In the event of a problem, the status will contain the error code, while the body of the response will usually contain additional information about the problem that was encountered.
+If an issue occurs, the response's status code will indicate the specific error, while the response body typically contains additional details about the encountered problem.
 
-In general, if the status returned is in the 200 range, it indicates that the request was fulfilled successfully and that no error was encountered.
 
-Return codes in the 400 range typically indicate that there was an issue with the request that was sent. For example, it might mean that you didn’t enter a parameter correctly, failed to validate a signature, requested an unauthorized action, the object you're requesting doesn't exist, or the request is invalid.
 
-If you receive a status in the 500 range, this generally indicates a node-side problem. This means that provider are having an issue on our end and cannot fulfill your request currently.
+In general, a status code in the 200 range signifies that the request was successfully processed without errors.
 
-400 and 500 level error responses will include a JSON object in their body, including the message attributes.
+Status codes in the 400 range usually indicate issues with the request itself. \
+For instance, it may signify incorrect parameter entry, signature validation failure, an attempt to perform an unauthorized action, the non-existence of the requested object, or an invalid request.
 
-#### Example Error Response
+Status codes in the 500 range generally point to a server-side problem. This means that there is an issue on the provider's end, and the request cannot be fulfilled at the moment.
+
+
+
+Responses for errors in the 400 and 500 range will include a JSON object in their response body, which contains attributes with error messages
+
+
+
+#### Example of Response for Error
 
 ```json
 // 400 Bad Request

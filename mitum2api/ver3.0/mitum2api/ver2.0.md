@@ -1,14 +1,16 @@
 # Requests
 
-Any tool that is fluent in HTTP can communicate with the API simply by requesting the correct URI.
+Any HTTP-compliant tool can easily interact with the API by sending requests to the appropriate URI. \
+\
+For security, it's important to use the HTTPS protocol to ensure that the traffic is encrypted. \
+\
+The API interface responds to various methods based on the specific action needed.
 
-Requests should be made using the HTTPS protocol so that traffic is encrypted.
-
-The interface responds to different methods depending on the action required.
 
 
+<table><thead><tr><th width="132.33333333333331">Methods</th><th>Usage</th></tr></thead><tbody><tr><td>GET</td><td>For straightforward retrieval of account, block, and operation information or network status, consider utilizing the GET method. The requested information will be returned in the form of a JSON object. Attributes specified in the JSON object can then be utilized to create further requests. Any request made using the GET method is of a read-only nature and will not impact the queried objects.</td></tr><tr><td>POST</td><td>For the creation of a new account or modification of the network's status, utilize the POST method in your request. The POST request should contain all the required attributes for creating a new account or altering the network's status. To perform these actions, submit a POST request to the designated endpoint</td></tr></tbody></table>
 
-<table><thead><tr><th width="132.33333333333331">Methods</th><th>Usage</th></tr></thead><tbody><tr><td>GET</td><td>For simple retrieval of information about your account, block and operation information, or network’s status, you should use the GET method.<br>The information you request will be returned to you as a JSON object.<br>The attributes defined by the JSON object can be used to form additional requests.<br>Any request using the GET method is read-only and will not affect any of the objects you are querying.</td></tr><tr><td>POST</td><td>To create a new account or change the network’s status, your request should specify the POST method.<br>The POST request includes all of the attributes necessary to create a new account or change the network’s status.<br>When you wish to work above, send a POST request to the target endpoint.</td></tr></tbody></table>
 
-Mitum is an immutable blockchain network, so it does not support other methods (e.g. "PATCH", "DELETE") other than "GET" and "POST" methods.
+
+Mitum operates as an immutable blockchain network, exclusively supporting the 'GET' and 'POST' methods, and it does not accommodate other methods like 'PATCH' or 'DELETE'
 

@@ -1,8 +1,9 @@
 # Responses
 
-When a request is successful, a response body will typically be sent back in the form of a JSON object.
+If the request is successful, the response body is sent back in the form of a JSON object.
 
-Inside this JSON object, the hint message of the resource that was the target of the request is set. In addition, the \_embedded field contains specific information.
+The JSON object contains hint message of the resource that was the target of the request. \
+In addition, the \_embedded field contains specific information.
 
 
 

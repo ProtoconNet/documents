@@ -4,11 +4,11 @@ The `_links` object:
 
 1. is returned as part of the response body.
 2. provides a way to get additional information.
-3. can contain various fields as requested.
+3. can contain various fields depending on request.
 
 
 
-#### Sample Links Object
+#### Sample of Links Object
 
 ```
 {
