@@ -1,10 +1,10 @@
 ---
-description: (/builder/operation) => Deprecated!
+description: (/builder/operation/fact) => Deprecated!
 ---
 
-# 1. Operation types to build
+# (old) Build operation messages by fact
 
-{% swagger method="get" path="" baseUrl="" summary="Get operation types available with API." expanded="false" fullWidth="false" %}
+{% swagger method="post" path="" baseUrl="http://node_IP" summary="Get operation message containing fact message." expanded="false" fullWidth="false" %}
 {% swagger-description %}
 
 {% endswagger-description %}

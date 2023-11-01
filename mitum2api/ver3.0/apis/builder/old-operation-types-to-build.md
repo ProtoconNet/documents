@@ -1,10 +1,10 @@
 ---
-description: (/builder/operation/sign) => Deprecated!
+description: (/builder/operation) => Deprecated!
 ---
 
-# 4. Sign operation messages
+# (old) Operation types to build
 
-{% swagger method="post" path="" baseUrl="" summary="Get signed operation message with sender's signature." expanded="false" fullWidth="false" %}
+{% swagger method="get" path="" baseUrl="http://node_IP" summary="Get operation types available with API." expanded="false" fullWidth="false" %}
 {% swagger-description %}
 
 {% endswagger-description %}

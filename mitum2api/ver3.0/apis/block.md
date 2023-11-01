@@ -1,3 +1,3 @@
 # Block
 
-Get information of block’s metadata and manifests in block.
+Get information of the block’s metadata and manifests in the block.

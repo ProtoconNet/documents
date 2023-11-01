@@ -1,10 +1,10 @@
 ---
-description: (/builder/operation/fact) => Deprecated!
+description: (/builder/operation/sign) => Deprecated!
 ---
 
-# 3. Build operation messages by fact
+# (old) Sign operation messages
 
-{% swagger method="post" path="" baseUrl="" summary="Get operation message containing fact message." expanded="false" fullWidth="false" %}
+{% swagger method="post" path="" baseUrl="http://node_IP" summary="Get signed operation message with sender's signature." expanded="false" fullWidth="false" %}
 {% swagger-description %}
 
 {% endswagger-description %}

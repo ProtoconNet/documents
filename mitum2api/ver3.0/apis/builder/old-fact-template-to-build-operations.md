@@ -2,9 +2,9 @@
 description: (/builder/operation/fact/template/{fact}) => Deprecated!
 ---
 
-# 2. Fact template to build operations
+# (old) Fact template to build operations
 
-{% swagger method="get" path="" baseUrl="" summary="Get fact template for /builder/operation/fact." expanded="false" fullWidth="false" %}
+{% swagger method="get" path="" baseUrl="http://node_IP" summary="Get fact template for /builder/operation/fact." expanded="false" fullWidth="false" %}
 {% swagger-description %}
 
 {% endswagger-description %}

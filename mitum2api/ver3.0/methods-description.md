@@ -4,12 +4,12 @@ description: /
 
 # 1. Get node information
 
-{% swagger method="get" path="" baseUrl="" summary="Get suffrage-node information of the currently connected Mitum-network." expanded="false" fullWidth="false" %}
+{% swagger method="get" path="/" baseUrl="http://node_IP" summary="Get suffrage-node information of the currently connected Mitum-network." expanded="false" fullWidth="false" %}
 {% swagger-description %}
-
+&#x20;The response includes network policy, local node settings, information about the node consensus process, and information about the latest block.
 {% endswagger-description %}
 
-{% swagger-response status="200: OK" description="" %}
+{% swagger-response status="200: OK" description="node information" %}
 
 {% endswagger-response %}
 
@@ -35,60 +35,60 @@ description: /
     "_hint": "mitum-currency-hal-v0.0.1",
     "_embedded": [
         {
+            "consensus": {
+                "state": "CONSENSUS",
+                "suffrage": {
+                    "nodes": [
+                        {
+                            "publickey": "28diDScgSoStgj2Goket5wC7xTeo2E2w5q2shZiy98yFEmpu",
+                            "_hint": "suffrage-node-state-value-v0.0.1",
+                            "start": 1,
+                            "address": "no0sas"
+                        }
+                    ],
+                    "height": 0
+                }
+            },
+            "_hint": "node-info-v0.0.1",
             "network_id": "bWl0dW0=",
             "last_manifest": {
-                "proposed_at": "2023-08-01T06:53:21.57886608Z",
-                "states_tree": null,
-                "hash": "HVdhQDf6FK1NHLVj8d85DPuNo1khp1zfVFYswhM49Hza",
-                "previous": "ErVzpsDr5Aj2BofmqBhNunsdTmrwfGYp7pwGyQy1KM5n",
-                "proposal": "G1tu1dSvwMdbpvKUSR82rrA2cEqjUN5kmnQFA3tjjfQB",
+                "proposal": "9sMie7cmFpDca3291pjFcfApYePxWgBptQ9bhx9RQFsC",
                 "operations_tree": null,
-                "suffrage": "E2rk7KVFU76YGTddXG3g7rAuWZ89zDMdjMy5UghRsTK9",
+                "suffrage": "kUmz18jsu3fPWc3gYdRhnqPKTJj6LbP528e6VqULhft",
                 "_hint": "manifest-v0.0.1",
-                "height": 258200
+                "height": 694656,
+                "states_tree": null,
+                "hash": "6QBJd4zxfNdSzPgkKdag2L53TBGYY5oLNnVghABansNU",
+                "previous": "ATo8qDkhquGEghzUiMEyLCLhhSEJTv8TV1c4VLdeHbWy",
+                "proposed_at": "2023-11-01T04:49:48.682416022Z"
             },
             "network_policy": {
+                "max_suffrage_size": 3,
+                "suffrage_withdraw_lifespan": 0,
                 "suffrage_candidate_limiter": {
                     "_hint": "currency-fixed-suffrage-candidate-limiter-rule-v0.0.1",
                     "limit": 1
                 },
                 "_hint": "currency-network-policy-v0.0.1",
                 "max_operations_in_proposal": 99,
-                "suffrage_candidate_lifespan": 333333333,
-                "max_suffrage_size": 3,
-                "suffrage_withdraw_lifespan": 0
+                "suffrage_candidate_lifespan": 333333333
             },
             "local": {
                 "address": "no0sas",
-                "publickey": "zaycqtbVxeR8VnQ7Zdqf3Z3G1imC4YyY9GBGYiEKtKx2mpu",
+                "publickey": "28diDScgSoStgj2Goket5wC7xTeo2E2w5q2shZiy98yFEmpu",
                 "parameters": {
-                    "_hint": "isaac-params-v0.0.1",
-                    "threshold": "67.0",
-                    "interval_broadcast_ballot": "3s",
-                    "wait_preparing_init_ballot": "5s",
+                    "interval_broadcast_ballot": "1s",
+                    "wait_preparing_init_ballot": "1.5s",
                     "ballot_stuck_wait": "33s",
                     "ballot_stuck_resolve_after": "1m6s",
-                    "max_try_handover_y_broker_sync_data": 33
+                    "max_try_handover_y_broker_sync_data": 33,
+                    "_hint": "isaac-params-v0.0.1",
+                    "threshold": "100.0"
                 },
                 "conn_info": "127.0.0.1:4320#tls_insecure",
-                "uptime": "1026436.214",
+                "uptime": "169798.151",
                 "version": "v0.0.1"
-            },
-            "consensus": {
-                "state": "CONSENSUS",
-                "suffrage": {
-                    "nodes": [
-                        {
-                            "address": "no0sas",
-                            "publickey": "zaycqtbVxeR8VnQ7Zdqf3Z3G1imC4YyY9GBGYiEKtKx2mpu",
-                            "_hint": "suffrage-node-state-value-v0.0.1",
-                            "start": 1
-                        }
-                    ],
-                    "height": 0
-                }
-            },
-            "_hint": "node-info-v0.0.1"
+            }
         }
     ],
     "_links": {
