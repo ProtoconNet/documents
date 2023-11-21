@@ -36,7 +36,7 @@
       * [1. Collection information](apis/contract/nft/1.-collection-information.md)
       * [2. NFT information by nftID](apis/contract/nft/2.-nft-information-by-nftid.md)
       * [3. All the NFTs information](apis/contract/nft/3.-all-the-nfts-information.md)
-      * [4. NFT operation by account](apis/contract/nft/4.-nft-operation-by-account.md)
+      * [4. NFT operators by account](apis/contract/nft/4.-nft-operators-by-account.md)
     * [DAO](apis/contract/dao.md)
     * [Credential](apis/contract/credential/README.md)
       * [1. Service information](apis/contract/credential/1.-service-information.md)

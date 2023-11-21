@@ -1,8 +1,8 @@
 # NFT
 
-Collection is similar to the symbol in the ERC-721 standard token contract.
+Collection is an NFT service registered in the contract.
 
-Collections can be created and new NFTs can be minted through the mitum.js framework.
+New NFTs can be minted and managed through collections.
 
 
 
