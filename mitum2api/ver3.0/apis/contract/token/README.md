@@ -1,8 +1,6 @@
 # Token
 
-Collection is an NFT service registered in the contract.
-
-New NFTs can be minted and managed through collections.
+You can issue new tokens using the token contract provided by Mitum.
 
 
 
